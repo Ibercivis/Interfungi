@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ibercivis.interfungi">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/frame" />
+
+        <activity
+            android:name="com.ibercivis.interfungi.BorrarProyecto"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.DescargarDatos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.ProyectoPrivado"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.Usuario"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.QuienesSomos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.add_marker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.Mapa"
+            android:screenOrientation="portrait" />
+        <!--activity
+            android:name=".Add"
+            android:screenOrientation="portrait" /-->
+        <activity
+            android:name="com.ibercivis.interfungi.Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ibercivis.interfungi.SignUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.ListadoProyectos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.CrearProyecto"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.CrearObservacion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ibercivis.interfungi.EditarProyecto"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

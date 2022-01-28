@@ -1,0 +1,188 @@
+<resources>
+    <string name="app_name">Interfungi</string>
+    <string name="app_claim">Network of intergenerational observers of the fungi family</string>
+    <string name="app_authors">Ibercivis Cita</string>
+
+    <string name="navigation_open_drawer">Open Navigation Drawer</string>
+    <string name="navigation_close_drawer">Close Navigation Drawer</string>
+
+    <string name="base_url">https://interfungi.ibercivis.es</string>
+
+    <string name="popup_wait">Please, wait...</string>
+
+    <string name="card1">This mushroom has been seen</string>
+    <string name="card2">times</string>
+    <string name="card3">Likes</string>
+    <string name="card4">Join</string>
+
+    <string name="login1">Welcome</string>
+    <string name="login2">Access with your user</string>
+    <string name="login3">Username</string>
+    <string name="login4">Password</string>
+    <string name="login5">Did you forget your password?</string>
+    <string name="login6">Get in</string>
+    <string name="login7">New user? Sign up</string>
+
+    <string name="sign1">Welcome</string>
+    <string name="sign2">Sign up to start mapping</string>
+    <string name="sign3">Username</string>
+    <string name="sign4">E-mail</string>
+    <string name="sign5">Password</string>
+    <string name="sign6">Confirm password</string>
+    <string name="sign7">Create user</string>
+    <string name="sign8">Already signed up? Access</string>
+
+    <string name="main1">Catalog</string>
+    <string name="main2">Create observation</string>
+    <string name="main3">My observations</string>
+    <string name="main4">What is Interfungi?</string>
+
+    <string name="mainmenu1">Home</string>
+    <string name="mainmenu2">Projects</string>
+    <string name="mainmenu3">Create project</string>
+    <string name="mainmenu4">User</string>
+    <string name="mainmenu5">My projects</string>
+    <string name="mainmenu6">Log out</string>
+
+    <string name="cardmenu1">Download all markers</string>
+    <string name="cardmenu2">Edit project</string>
+    <string name="cardmenu3">Delete project</string>
+
+    <string name="searcher">Search</string>
+
+    <string name="marker1">NEW MARKER</string>
+    <string name="marker2">Add photo</string>
+    <string name="btncancel">Cancel</string>
+    <string name="btnaccept">Add marker</string>
+    <string name="volver">Return</string>
+    <string name="noInfo">The project administrator has not added a description for this attribute.</string>
+
+    <string name="delete1">Are you sure you want to delete this project?</string>
+    <string name="delete2">This action will erase all associated markers irreversibly. We recommend that you download the markers of this project before deleting it permanently.</string>
+    <string name="delete3">Delete project</string>
+
+    // Pantalla crear observacion
+    <string name="crear_observacion_titulo">Create observation</string>
+
+    <string name="crear1">Project Data</string>
+    <string name="crear2">Title</string>
+    <string name="crear3">Observation description</string>
+    <string name="crear4">Website</string>
+    <string name="crear5">Imagen sin cortar</string>
+    <string name="crear6">Recommended resolution 200x200</string>
+    <string name="crear7">Marker</string>
+    <string name="crear8">Includes photo"    "</string>
+    <string name="crear9">Add the attributes you need (max. 16)</string>
+    <string name="crear10">Private "   "</string>
+    <string name="crear11">Add text attribute</string>
+    <string name="crear12">Add number attribute</string>
+    <string name="crear13">Attribute 1 (Text response)</string>
+    <string name="crear14">Description of attribute 1 (Optional)</string>
+    <string name="crear15">Attribute 2 (Text response)</string>
+    <string name="crear16">Description of attribute 2 (Optional)</string>
+    <string name="crear17">Attribute 3 (Text response)</string>
+    <string name="crear18">Description of attribute 3 (Optional)</string>
+    <string name="crear19">Attribute 4 (Text response)</string>
+    <string name="crear20">Description of attribute 4 (Optional)</string>
+    <string name="crear21">Attribute 5 (Text response)</string>
+    <string name="crear22">Description of attribute 5 (Optional)</string>
+    <string name="crear23">Attribute 6 (Text response)</string>
+    <string name="crear24">Description of attribute 6 (Optional)</string>
+    <string name="crear25">Attribute 7 (Text response)</string>
+    <string name="crear26">Description of attribute 7 (Optional)</string>
+    <string name="crear27">Attribute 8 (Text response)</string>
+    <string name="crear28">Description of attribute 8 (Optional)</string>
+    <string name="crear29">Attribute 9 (Text response)</string>
+    <string name="crear30">Description of attribute 9 (Optional)</string>
+    <string name="crear31">Attribute 10 (Text response)</string>
+    <string name="crear32">Description of attribute 10 (Optional)</string>
+    <string name="crear33">Attribute 11 (Text response)</string>
+    <string name="crear34">Description of attribute 11 (Optional)</string>
+    <string name="crear35">Attribute 12 (Text response)</string>
+    <string name="crear36">Description of attribute 12 (Optional)</string>
+    <string name="crear37">Attribute 13 (Text response)</string>
+    <string name="crear38">Description of attribute 13 (Optional)</string>
+    <string name="crear39">Attribute 14 (Text response)</string>
+    <string name="crear40">Description of attribute 14 (Optional)</string>
+    <string name="crear41">Attribute 15 (Text response)</string>
+    <string name="crear42">Description of attribute 15 (Optional)</string>
+    <string name="crear43">Attribute 16 (Text response)</string>
+    <string name="crear44">Description of attribute 16 (Optional)</string>
+    <string name="crear45">Create project</string>
+    <string name="crear46">Attribute 1 (Number response)</string>
+    <string name="crear47">Attribute 2 (Number response)</string>
+    <string name="crear48">Attribute 3 (Number response)</string>
+    <string name="crear49">Attribute 4 (Number response)</string>
+    <string name="crear50">Attribute 5 (Number response)</string>
+    <string name="crear51">Attribute 6 (Number response)</string>
+    <string name="crear52">Attribute 7 (Number response)</string>
+    <string name="crear53">Attribute 8 (Number response)</string>
+    <string name="crear54">Attribute 9 (Number response)</string>
+    <string name="crear55">Attribute 10 (Number response)</string>
+    <string name="crear56">Attribute 11 (Number response)</string>
+    <string name="crear57">Attribute 12 (Number response)</string>
+    <string name="crear58">Attribute 13 (Number response)</string>
+    <string name="crear59">Attribute 14 (Number response)</string>
+    <string name="crear60">Attribute 15 (Number response)</string>
+    <string name="crear61">Attribute 16 (Number response)</string>
+    <string name="crear62">You have reached the limit of attributes</string>
+    <string name="crear63">Project successfully added</string>
+    <string name="crear64">At least one attribute must be added to the project marker.</string>
+    <string name="crear65">Attribute 17 (Text response)</string>
+    <string name="crear66">Description of attribute 17 (Optional)</string>
+    <string name="crear67">Attribute 18 (Text response)</string>
+    <string name="crear68">Description of attribute 18 (Optional)</string>
+    <string name="crear69">Attribute 19 (Text response)</string>
+    <string name="crear70">Description of attribute 19 (Optional)</string>
+    <string name="crear71">Attribute 20 (Text response)</string>
+    <string name="crear72">Description of attribute 20 (Optional)</string>
+    <string name="crear73">Attribute 21 (Text response)</string>
+    <string name="crear74">Description of attribute 21 (Optional)</string>
+    <string name="crear75">Attribute 22 (Text response)</string>
+    <string name="crear76">Description of attribute 22 (Optional)</string>
+    <string name="crear77">Attribute 23 (Text response)</string>
+    <string name="crear78">Description of attribute 23 (Optional)</string>
+    <string name="crear79">Attribute 17 (Number response)</string>
+    <string name="crear80">Attribute 18 (Number response)</string>
+    <string name="crear81">Attribute 19 (Number response)</string>
+    <string name="crear82">Attribute 20 (Number response)</string>
+    <string name="crear83">Attribute 21 (Number response)</string>
+    <string name="crear84">Attribute 22 (Number response)</string>
+    <string name="crear85">Attribute 23 (Number response)</string>
+
+    <string name="descargar1">Enter the email address where you want to receive bookmark data for this project. The data will be sent in .CSV format</string>
+    <string name="descargar2">Accept</string>
+
+    <string name="editar1">Edit project</string>
+    <string name="editar2">Project successfully edited</string>
+
+    <string name="privado">This is a private project and requires a password to participate.</string>
+
+    <string name="user1">My projects:</string>
+    <string name="user2">You have not created any projects yet.</string>
+    <string name="user3">My observations:</string>
+    <string name="user4">You have not liked any project yet. Remember to like the projects in which you participate so that they appear here.</string>
+
+    <string name="mapa">Press and hold on the map at the position where you want to add a Marker</string>
+    <string name="mapa1">Cancel</string>
+    <string name="mapa2">Añadir Observación</string>
+    <string name="mapa3">Accept</string>
+    <string name="mapa4">Edit Marker</string>
+    <string name="mapa5">Edit</string>
+
+    <string name="quienes">El proyecto tiene como uno de sus principales objetivos conservar el acervo
+        popular de las personas mayores del medio rural, en peligro de desaparición, impulsando el
+        relevo generacional del conocimiento del reino fungi a través de la creación del binomio
+        tutor-mentor micológico rural-urbano con la participación de equipos o parejas de observadores
+        de generaciones diferentes (p.e abuelos y nietos) que fomenten el intercambio de conocimiento entre el mundo rural y el urbano.
+
+        La implicación de los jóvenes a la generación de ciencia ciudadana micológica de la mano de
+        la experiencia de sus mentores permitirá, por una parte, transferir el conocimiento de años
+        sobre los patrones de fructificación de las especies fúngicas, las áreas de producción y el
+        potencial productivo. Igualmente, permitirá transferir de nietos a abuelos el uso de las redes
+        sociales y aplicaciones informáticas facilitadoras de la generación de los datos del proyecto</string> <string name="seta_sincortar">Seta sin cortar</string>
+    <string name="seta_cortada">Seta cortada</string>
+    <string name="selecciona_seta">¿Qué especie has identificado?</string>
+
+
+</resources>

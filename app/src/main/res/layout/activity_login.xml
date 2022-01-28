@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ibercivis.interfungi.Login"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logologin"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/interfungi_marron"
+        android:transitionName="logo_image"
+        />
+
+        <TextView
+            android:id="@+id/bienvenidotxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo"
+            android:text="@string/login1"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="40sp"
+            android:transitionName="logo_text" />
+
+    <TextView
+        android:id="@+id/accedetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic"
+        android:text="@string/login2"
+        android:textSize="18sp"
+        android:transitionName="logo_desc"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:transitionName="username_tran">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login4"
+            app:passwordToggleEnabled="true"
+            android:transitionName="password_tran"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/pass_forgotten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login5"
+            android:background="#00000000"
+            android:elevation="0dp"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/entrar_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/primaryLightColor"
+            android:onClick="loginRequest"
+            android:text="@string/login6"
+            android:textColor="#fff"
+            android:transitionName="btn1_tran" />
+
+        <Button
+            android:id="@+id/signup_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:background="#00000000"
+            android:elevation="0dp"
+            android:fontFamily="@font/antic"
+            android:text="@string/login7"
+            android:transitionName="btn2_tran"/>
+
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/cargando"
+    android:layout_width="match_parent"
+    android:layout_height="770dp"
+    android:background="#A4363030"
+    android:gravity="center"
+    android:visibility="gone"
+    >
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/marcobotonsolido">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Por favor, espere..."
+            android:fontFamily="sans-serif-condensed"/>
+
+        <ProgressBar
+            android:layout_marginTop="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recover_layout"
+        android:layout_width="match_parent"
+        android:layout_height="770dp"
+        android:background="#A4363030"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+
+            android:padding="24dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/marcobotonsolido">
+            <TextView
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:text="Introduce la dirección de email asociada a tu usuario para recuperar tu contraseña."
+                android:fontFamily="sans-serif-condensed"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:transitionName="password_tran"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_email_recover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_recover"
+                android:layout_marginTop="8dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="ACEPTAR"
+                android:background="#419FBB"
+                android:textColor="#ffffff"
+                />
+            <Button
+                android:id="@+id/btn_cancel_recover"
+                android:layout_marginTop="8dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                android:background="#A7261B"
+                android:textColor="#ffffff"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

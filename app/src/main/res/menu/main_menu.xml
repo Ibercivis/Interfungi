@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/mainmenu1"
+            android:icon="@drawable/home_icon"/>
+
+        <item
+            android:id="@+id/nav_projects"
+            android:title="@string/mainmenu2"
+            android:icon="@drawable/projects_icon"/>
+
+        <item
+            android:id="@+id/nav_crear"
+            android:title="@string/mainmenu3"
+            android:icon="@drawable/add_icon"/>
+
+    </group>
+
+
+
+        <item
+            android:title="@string/mainmenu4" >
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+
+            <item
+                android:id="@+id/nav_misproyectos"
+                android:title="@string/mainmenu5"
+                android:icon="@drawable/misproyectos_icon"/>
+
+            <item
+                android:id="@+id/nav_logout"
+                android:title="@string/mainmenu6"
+                android:icon="@drawable/logout_icon"/>
+
+            </group>
+        </menu>
+
+        </item>
+
+
+
+</menu>

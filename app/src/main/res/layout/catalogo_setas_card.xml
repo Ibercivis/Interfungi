@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/catalogo_setas_card"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="5dp"
+    android:elevation="5dp"
+    >
+
+    //app:cardBackgroundColor="#2196F3"
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/foto"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:paddingHorizontal="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_image_black_24dp"
+                android:text="Subir Logo"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/noto_sans"
+                android:text="Título"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
