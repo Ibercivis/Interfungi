@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/add_icon.xml" value="0.35648148148148145" />
+        <entry key="app/src/main/res/drawable/frame.xml" value="0.5010416666666667" />
+        <entry key="app/src/main/res/drawable/ic_interfungi_seta_big.xml" value="0.7157407407407408" />
+        <entry key="app/src/main/res/drawable/interfungi_seta.xml" value="0.7157407407407408" />
+        <entry key="app/src/main/res/layout/activity_add.xml" value="0.31458966565349544" />
+        <entry key="app/src/main/res/layout/activity_add_marker.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_borrar_proyecto.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_crear_observacion.xml" value="0.4116847826086957" />
+        <entry key="app/src/main/res/layout/activity_crear_proyecto.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_descargar_datos.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_editar_proyecto.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_listado_proyectos.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35131712259371833" />
+        <entry key="app/src/main/res/layout/activity_mapa.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_proyecto_privado.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_quienes_somos.xml" value="0.35131712259371833" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_usuario.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/catalogo_setas_card.xml" value="0.2127659574468085" />
+        <entry key="app/src/main/res/layout/header.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/layout.xml" value="0.23581560283687944" />
+        <entry key="app/src/main/res/layout/marcador_card.xml" value="0.2069402228976697" />
+        <entry key="app/src/main/res/layout/marcadores_card.xml" value="0.21251266464032423" />
+        <entry key="app/src/main/res/layout/proyectos_card.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.7223958333333333" />
+        <entry key="app/src/main/res/menu/menu_buscador.xml" value="0.7223958333333333" />
+        <entry key="app/src/main/res/menu/menu_card.xml" value="0.7223958333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.7157407407407408" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.4527777777777778" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
