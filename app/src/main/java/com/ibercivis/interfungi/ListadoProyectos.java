@@ -10,9 +10,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -33,11 +36,15 @@ import com.ibercivis.interfungi.clases.Adaptador;
 import com.ibercivis.interfungi.clases.SessionManager;
 import com.ibercivis.interfungi.clases.proyectos;
 import com.ibercivis.interfungi.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -197,7 +204,12 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
                             String description = String.valueOf(jsonArray.getJSONObject(i).get("descripcion"));
                             String web = String.valueOf(jsonArray.getJSONObject(i).get("web"));
                             String URL_imagen = "https://interfungi.ibercivis.es/uploads/proyectos/"+String.valueOf(id)+".jpg";
-                            System.out.println(URL_imagen);
+                            new Thread(new Runnable() {
+                                public void run() {
+                                    String img = saveToInternalStorage(URL_imagen);
+                                    Log.d("filepath", img);
+                                }
+                            }).start();
                             ListaProyectos.add(new proyectos(id, title, subtitle, description, web, aportaciones, likes, voted, URL_imagen));
                         }
                         recyclerLista.setHasFixedSize(true);
@@ -225,6 +237,7 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                cargar.setVisibility(View.GONE);
             }
         }){
             @Override
@@ -315,6 +328,35 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
         }
 
         return listaFiltrada;
+    }
+
+    private String saveToInternalStorage(String myUrl){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+
+        // Create imageDir
+        File mypath=new File(directory,"profile.jpg");
+        Log.d("mypath", mypath.getAbsolutePath());
+        FileOutputStream fos = null;
+
+        //Picasso.with(holder.animation.getContext()).load(urlfoto).into(holder.logo);
+        try {
+            Bitmap bitmap = Picasso.with(getApplicationContext()).load(myUrl).get();
+            fos = new FileOutputStream(mypath);
+
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return mypath.getAbsolutePath();
     }
 }
 
