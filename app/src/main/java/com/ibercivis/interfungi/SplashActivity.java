@@ -1,5 +1,7 @@
 package com.ibercivis.interfungi;
 
+import static android.os.Build.VERSION.SDK_INT;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -7,9 +9,12 @@ import android.Manifest;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.ibercivis.interfungi.clases.SessionManager;
 import com.ibercivis.interfungi.R;
 
@@ -42,17 +48,38 @@ public class SplashActivity extends AppCompatActivity {
 
         /* AQUÍ SE HACEN LAS PETICIONES DE PERMISOS QUE VA A NECESITAR LA APP: UBICACIÓN, ACCESO A ESCRITURA PARA LOS TILES DE LOS MAPAS, ACCESO A LA CÁMARA*/
 
-        if ( Build.VERSION.SDK_INT >= 23){
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
-                    PackageManager.PERMISSION_GRANTED  ){
+        if(SDK_INT >= 30){
+            if(!Environment.isExternalStorageManager()){
+                Snackbar.make(findViewById(android.R.id.content), "Permission needed!", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Settings", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                try {
+                                    Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+                                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
+                                    startActivity(intent);
+                                } catch (Exception ex){
+                                    Intent intent = new Intent();
+                                    intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                                    startActivity(intent);
+                                }
+                            }
+                        })
+                        .show();
+            } }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED  ){
+            if (SDK_INT >= Build.VERSION_CODES.R) {
                 requestPermissions(new String[]{
-                                android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
                         REQUEST_CODE_ASK_PERMISSIONS);
-
-                recreate();
-
-                return ;
             }
+
+            recreate();
+
+            return ;
         }
 
         //Animations

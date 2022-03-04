@@ -32,6 +32,7 @@ import com.ibercivis.interfungi.R;
 import com.ibercivis.interfungi.clases.Marcador;
 import com.ibercivis.interfungi.clases.SessionManager;
 import com.ibercivis.interfungi.clases.proyectos;
+import com.ibercivis.interfungi.db.entities.TiposDeSetas;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,10 +47,10 @@ public class ViewHolderCatalogoSetas extends RecyclerView.ViewHolder implements 
 
     TextView titulo;
     ImageView foto;
-    List<proyectos> ListaCatalogoSetas;
+    List<TiposDeSetas> ListaCatalogoSetas;
     CardView card;
 
-    public ViewHolderCatalogoSetas(@NonNull View itemView, List<proyectos> datos) {
+    public ViewHolderCatalogoSetas(@NonNull View itemView, List<TiposDeSetas> datos) {
         super(itemView);
 
         ListaCatalogoSetas = datos;
@@ -67,8 +68,8 @@ public class ViewHolderCatalogoSetas extends RecyclerView.ViewHolder implements 
         if (event.getAction() ==MotionEvent.ACTION_DOWN) {
 
             int position = getAdapterPosition();
-            final proyectos proyecto = ListaCatalogoSetas.get(position);
-            Log.d("Posicion", proyecto.getTitulo());
+            final TiposDeSetas proyecto = ListaCatalogoSetas.get(position);
+            Log.d("Posicion", proyecto.getNombreSeta());
             v.setElevation(0);
             return true;
         }

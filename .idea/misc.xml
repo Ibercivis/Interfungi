@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_listado_proyectos.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35131712259371833" />
-        <entry key="app/src/main/res/layout/activity_mapa.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_mapa.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_proyecto_privado.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/activity_quienes_somos.xml" value="0.35131712259371833" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21580547112462006" />
@@ -28,7 +28,7 @@
         <entry key="app/src/main/res/layout/layout.xml" value="0.23581560283687944" />
         <entry key="app/src/main/res/layout/marcador_card.xml" value="0.2069402228976697" />
         <entry key="app/src/main/res/layout/marcadores_card.xml" value="0.21251266464032423" />
-        <entry key="app/src/main/res/layout/proyectos_card.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/proyectos_card.xml" value="0.25" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.7223958333333333" />
         <entry key="app/src/main/res/menu/menu_buscador.xml" value="0.7223958333333333" />

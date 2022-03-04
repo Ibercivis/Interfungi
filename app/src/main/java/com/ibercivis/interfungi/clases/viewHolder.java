@@ -26,6 +26,7 @@ import com.ibercivis.interfungi.DescargarDatos;
 import com.ibercivis.interfungi.EditarProyecto;
 import com.ibercivis.interfungi.Add;
 import com.ibercivis.interfungi.R;
+import com.ibercivis.interfungi.db.entities.TiposDeSetas;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,10 +51,10 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     TextView likes;
     ImageView logo;
     ImageView iconCreaObservacion;
-    List<proyectos> ListaProyectos;
+    List<TiposDeSetas> ListaProyectos;
 
 
-    public viewHolder(@NonNull View itemView, List<proyectos> datos) {
+    public viewHolder(@NonNull View itemView, List<TiposDeSetas> datos) {
         super(itemView);
 
         titulo = itemView.findViewById(R.id.titulo);
@@ -76,7 +77,7 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         int position = getAdapterPosition();
-        final proyectos proyecto = ListaProyectos.get(position);
+        final TiposDeSetas proyecto = ListaProyectos.get(position);
 
 
         if(v.getId() == buttonViewOptions.getId()){
@@ -92,26 +93,28 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
                         case R.id.menu1:
                             //handle menu1 click
 
-                            int id = proyecto.getIdProyecto();
+                            /*
+
+                            int id = proyecto.getIdSeta();
                             Intent intent = new Intent(buttonViewOptions.getContext(), DescargarDatos.class);
                             intent.putExtra("idProyecto", id);
                             startActivity(btn.getContext(), intent, null);
-
+                            */
                             break;
 
                         case R.id.menu2:
                             //handle menu1 click
-
-                            int id2 = proyecto.getIdProyecto();
+                            /*
+                            int id2 = proyecto.getIdSeta();
                             Intent intent2 = new Intent(buttonViewOptions.getContext(), BorrarProyecto.class);
                             intent2.putExtra("idProyecto", id2);
                             startActivity(btn.getContext(), intent2, null);
-
+                            */
                             break;
 
                         case R.id.menu3:
                             //handle menu1 click
-
+                            /*
                             int id3 = proyecto.getIdProyecto();
                             String tituloProyecto = proyecto.getTitulo();
                             String descripcionProyecto = proyecto.getDescripcion();
@@ -130,14 +133,14 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
                             intent3.putExtra("tieneLogo", tieneLogo);
                             intent3.putExtra("urlLogo", urlLogo);
                             startActivity(btn.getContext(), intent3, null);
-
+                            */
                             break;
 
                     }
                     return false;
                 }
             });
-
+                            /*
             SessionManager session = new SessionManager(buttonViewOptions.getContext());
 
             if(proyecto.getIdUser() != session.getIdUser()){
@@ -150,9 +153,9 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
             }
 
             popup.show();
-
+                        */
         }
-
+                        /*
         if (v.getId() == iconCreaObservacion.getId()) {
 
 
@@ -167,7 +170,7 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
         }
         if (v.getId() == animation.getId()){
-            if(proyecto.isLegusta() == 0) {
+            if(proyecto.getLegustaSeta() == 0) {
                 votarProyecto(proyecto, v);
                 proyecto.likes = (proyecto.likes + 1);
                 likes.setText(Integer.toString(proyecto.likes));
@@ -186,7 +189,7 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
                 proyecto.setLegusta(0);
             }
         }
-
+                    */
     }
 
     public void votarProyecto (final proyectos proyecto, final View v) {

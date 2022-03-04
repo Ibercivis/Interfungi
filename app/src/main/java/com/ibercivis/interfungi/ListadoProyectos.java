@@ -15,6 +15,8 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,7 +38,13 @@ import com.ibercivis.interfungi.clases.Adaptador;
 import com.ibercivis.interfungi.clases.SessionManager;
 import com.ibercivis.interfungi.clases.proyectos;
 import com.ibercivis.interfungi.R;
+import com.ibercivis.interfungi.db.AppDatabase;
+import com.ibercivis.interfungi.db.DAO.TiposDeSetasDAO;
+import com.ibercivis.interfungi.db.entities.TiposDeSetas;
+import com.ibercivis.interfungi.repository.TiposDeSetasRepository;
+import com.ibercivis.interfungi.repository.TiposDeSetasRepositoryImplement;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,8 +53,10 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -61,7 +71,9 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
     //Propios de esta Activity
     RecyclerView recyclerLista;
     Adaptador recyclerAdapter;
-    ArrayList<proyectos> ListaProyectos = new ArrayList<>();
+    ArrayList<TiposDeSetas> ListaProyectos = new ArrayList<>();
+    ArrayList<List<TiposDeSetas>> ListaDb = new ArrayList<>();
+    List<TiposDeSetas> listaSetas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +112,22 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
 
         /*-----MÉTODOS PROPIOS DE ESTA ACTIVITY-----*/
 
-        getInfoRequest();
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else
+            connected = false;
+
+        if(connected == true) {
+            //Hay conexión a internet. Descargamos el catálogo y, en su caso, actualizamos la base de datos.
+            getInfoRequest(connected);
+        } else {
+            getDbRequest(connected);
+        }
 
     }
 
@@ -159,13 +186,24 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }
 
-    public void getInfoRequest () {
+    public void getInfoRequest (Boolean conectado) {
         final LinearLayout cargar = findViewById(R.id.cargando);
         String idUser, toktok;
         int item;
         SessionManager session = new SessionManager(ListadoProyectos.this);
         cargar.setVisibility(View.VISIBLE);
         recyclerLista = findViewById(R.id.recyclerproyectos);
+
+        //Creamos instancias de la base de datos
+        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+        TiposDeSetasDAO dao = db.tiposDeSetasDAO();
+        TiposDeSetasRepository repo = new TiposDeSetasRepositoryImplement(dao);
+
+        /*
+        //A modo de prueba, vacío la base de datos.
+        listaSetas = repo.getAllTiposDeSetasRepo();
+        repo.deleteAllTiposDeSetasRepo(listaSetas);
+        */
 
         // Input data ok, so go with the request
 
@@ -193,6 +231,8 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
 
                         for (i=0; i < jsonArray.length(); i++){
 
+                            TiposDeSetas tiposDeSetas = new TiposDeSetas();
+
                             // JSONArray jsonArray1 = jsonArray.getJSONArray(i); //Diferentes proyectos
 
                             int id = Integer.valueOf(String.valueOf(jsonArray.getJSONObject(i).get("id")));
@@ -204,18 +244,52 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
                             String description = String.valueOf(jsonArray.getJSONObject(i).get("descripcion"));
                             String web = String.valueOf(jsonArray.getJSONObject(i).get("web"));
                             String URL_imagen = "https://interfungi.ibercivis.es/uploads/proyectos/"+String.valueOf(id)+".jpg";
-                            new Thread(new Runnable() {
-                                public void run() {
-                                    String img = saveToInternalStorage(URL_imagen);
-                                    Log.d("filepath", img);
-                                }
-                            }).start();
-                            ListaProyectos.add(new proyectos(id, title, subtitle, description, web, aportaciones, likes, voted, URL_imagen));
+                            tiposDeSetas.setIdSeta(id);
+                            tiposDeSetas.setLegustaSeta(voted);
+                            tiposDeSetas.setAportacionesSeta(aportaciones);
+                            tiposDeSetas.setLikesSeta(likes);
+                            tiposDeSetas.setNombreSeta(title);
+                            tiposDeSetas.setCientificoSeta(subtitle);
+                            tiposDeSetas.setDescripcionSeta(description);
+                            tiposDeSetas.setWebSeta(web);
+                            tiposDeSetas.setLogoSeta(URL_imagen);
+                            if(repo.findByIdTiposDeSetasRepo(id) == null){
+                            tiposDeSetas.setIdSeta(id);
+                            tiposDeSetas.setLegustaSeta(voted);
+                            tiposDeSetas.setAportacionesSeta(aportaciones);
+                            tiposDeSetas.setLikesSeta(likes);
+                            tiposDeSetas.setNombreSeta(title);
+                            tiposDeSetas.setCientificoSeta(subtitle);
+                            tiposDeSetas.setDescripcionSeta(description);
+                            tiposDeSetas.setWebSeta(web);
+                            tiposDeSetas.setLogoSeta(URL_imagen);
+
+                                new Thread(new Runnable() {
+                                    public void run() {
+
+                                        String img = saveToInternalStorage(URL_imagen, String.valueOf(tiposDeSetas.getIdSeta())+".jpg", tiposDeSetas, repo);
+                                        Log.d("filepath", img);
+
+                                    }
+                                }).start();
+
+                               // repo.insertTiposDeSetasRepo(tiposDeSetas);
+                            }
+
+
+
+                            listaSetas = repo.getAllTiposDeSetasRepo();
+                            ListaDb.add(listaSetas);
+                            ListaProyectos.add(tiposDeSetas);
                         }
                         recyclerLista.setHasFixedSize(true);
                         LinearLayoutManager layout = new LinearLayoutManager(ListadoProyectos.this);
                         layout.setOrientation(LinearLayoutManager.VERTICAL);
-                        recyclerAdapter = new Adaptador(ListaProyectos);
+
+                        //Le pasamos al adaptador la lista descargada y el estado de la conexion
+                        recyclerAdapter = new Adaptador(ListaProyectos, conectado);
+
+
                         //recyclerLista.setAdapter(new Adaptador(ListaProyectos));
                         recyclerLista.setAdapter(recyclerAdapter);
                         recyclerLista.setLayoutManager(layout);
@@ -259,6 +333,45 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
         queue.add(sr);
     }
 
+    public void getDbRequest (Boolean conectado) {
+        final LinearLayout cargar = findViewById(R.id.cargando);
+        cargar.setVisibility(View.VISIBLE);
+        recyclerLista = findViewById(R.id.recyclerproyectos);
+
+        //Creamos instancias de la base de datos
+        AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
+        TiposDeSetasDAO dao = db.tiposDeSetasDAO();
+        TiposDeSetasRepository repo = new TiposDeSetasRepositoryImplement(dao);
+
+        /*
+        //A modo de prueba, vacío la base de datos.
+        listaSetas = repo.getAllTiposDeSetasRepo();
+        repo.deleteAllTiposDeSetasRepo(listaSetas);
+        */
+
+
+
+        listaSetas = repo.getAllTiposDeSetasRepo();
+
+
+
+                        recyclerLista.setHasFixedSize(true);
+                        LinearLayoutManager layout = new LinearLayoutManager(ListadoProyectos.this);
+                        layout.setOrientation(LinearLayoutManager.VERTICAL);
+
+                        //Le pasamos al adaptador la lista descargada y el estado de la conexion
+                        recyclerAdapter = new Adaptador(listaSetas, conectado);
+
+
+                        //recyclerLista.setAdapter(new Adaptador(ListaProyectos));
+                        recyclerLista.setAdapter(recyclerAdapter);
+                        recyclerLista.setLayoutManager(layout);
+                        cargar.setVisibility(View.GONE);
+
+
+
+    }
+
     public boolean onCreateOptionsMenu(Menu menu){
 
         getMenuInflater().inflate(R.menu.menu_buscador, menu);
@@ -296,7 +409,7 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
 
         try{
 
-            ArrayList<proyectos> listaFiltrada = filter(ListaProyectos,newText);
+            ArrayList<TiposDeSetas> listaFiltrada = filter(ListaProyectos,newText);
             recyclerAdapter.setFilter(listaFiltrada);
 
         } catch (Exception e){
@@ -306,16 +419,16 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
         return false;
     }
 
-    private ArrayList<proyectos> filter(ArrayList<proyectos> proyecto, String texto) {
+    private ArrayList<TiposDeSetas> filter(ArrayList<TiposDeSetas> proyecto, String texto) {
 
-        ArrayList<proyectos> listaFiltrada = new ArrayList<>();
+        ArrayList<TiposDeSetas> listaFiltrada = new ArrayList<>();
 
         try{
             texto=texto.toLowerCase();
 
-            for(proyectos project: proyecto){
+            for(TiposDeSetas project: proyecto){
 
-                String project2 = project.getTitulo().toLowerCase();
+                String project2 = project.getNombreSeta().toLowerCase();
 
                 if(project2.contains(texto)){
                     listaFiltrada.add(project);
@@ -330,23 +443,25 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
         return listaFiltrada;
     }
 
-    private String saveToInternalStorage(String myUrl){
+    private String saveToInternalStorage(String myUrl, String name, TiposDeSetas seta, TiposDeSetasRepository repo){
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
 
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 
         // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+        File mypath=new File(directory,name);
         Log.d("mypath", mypath.getAbsolutePath());
         FileOutputStream fos = null;
 
         //Picasso.with(holder.animation.getContext()).load(urlfoto).into(holder.logo);
         try {
-            Bitmap bitmap = Picasso.with(getApplicationContext()).load(myUrl).get();
             fos = new FileOutputStream(mypath);
+            Bitmap bitmap = Picasso.with(getApplicationContext()).load(myUrl).get();
+
 
             // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fos);
+            seta.setLogoSeta(mypath.getAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -356,6 +471,8 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
                 e.printStackTrace();
             }
         }
+        seta.setLogoSeta(mypath.getAbsolutePath());
+        repo.insertTiposDeSetasRepo(seta);
         return mypath.getAbsolutePath();
     }
 }

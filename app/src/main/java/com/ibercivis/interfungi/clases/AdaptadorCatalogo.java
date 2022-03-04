@@ -1,5 +1,6 @@
 package com.ibercivis.interfungi.clases;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,20 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ibercivis.interfungi.R;
+import com.ibercivis.interfungi.db.entities.TiposDeSetas;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorCatalogo extends RecyclerView.Adapter<ViewHolderCatalogoSetas> {
 
-    List<proyectos> ListaObjeto;
+    List<TiposDeSetas> ListaObjeto;
     int selected_position = -1;
     private TextView especie_identificada;
+    Boolean Connected;
 
-    public AdaptadorCatalogo(List<proyectos> listaObjeto, TextView especie_identificada) {
+    public AdaptadorCatalogo(List<TiposDeSetas> listaObjeto, TextView especie_identificada, Boolean connected) {
         ListaObjeto = listaObjeto;
         this.especie_identificada = especie_identificada;
+        Connected = connected;
     }
 
     @NonNull
@@ -36,17 +41,27 @@ public class AdaptadorCatalogo extends RecyclerView.Adapter<ViewHolderCatalogoSe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolderCatalogoSetas holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolderCatalogoSetas holder, @SuppressLint("RecyclerView") int position) {
 
         Log.d("AdaptadorSetas", "OnBindViewHolder");
-        Log.d("AdaptadorSetasTitulo", ListaObjeto.get(position).getTitulo());
-        holder.titulo.setText(ListaObjeto.get(position).getTitulo());
-        String foto = ListaObjeto.get(position).getLogo();
-        Picasso.with(holder.foto.getContext()).load(foto).into(holder.foto);
+        Log.d("AdaptadorSetasTitulo", ListaObjeto.get(position).getNombreSeta());
+        holder.titulo.setText(ListaObjeto.get(position).getNombreSeta());
+        String urlfoto = ListaObjeto.get(position).getLogoSeta();
+
+        if(Connected==true){
+            //HAY CONEXIÓN, CARGAMOS DESDE URL
+            Picasso.with(holder.foto.getContext()).load(urlfoto).into(holder.foto);
+        } else {
+            //NO HAY CONEXIÓN, CARGAMOS DESDE DB LOCAL
+            Picasso.with(holder.foto.getContext()).load(new File(urlfoto)).into(holder.foto);
+        }
+
+       // Picasso.with(holder.foto.getContext()).load(foto).into(holder.foto);
+
         holder.card.setOnTouchListener(new View.OnTouchListener(){
             @Override public boolean onTouch(View v, MotionEvent e) {
                 if (e.getAction() ==MotionEvent.ACTION_DOWN) {
-                    especie_identificada.setText(ListaObjeto.get(position).getTitulo());
+                    especie_identificada.setText(ListaObjeto.get(position).getNombreSeta());
                     v.setElevation(0);
                     return true;
                 }
@@ -61,7 +76,7 @@ public class AdaptadorCatalogo extends RecyclerView.Adapter<ViewHolderCatalogoSe
         return ListaObjeto.size();
     }
 
-    public void setFilter(ArrayList<proyectos> listaFiltrada){
+    public void setFilter(ArrayList<TiposDeSetas> listaFiltrada){
 
         this.ListaObjeto = new ArrayList<>();
         this.ListaObjeto.addAll(listaFiltrada);

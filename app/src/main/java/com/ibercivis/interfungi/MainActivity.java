@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         card_crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(), Mapa.class);
+                Intent intent2 = new Intent(getApplicationContext(), Mapa2.class);
                 startActivity(intent2);
             }
         });
