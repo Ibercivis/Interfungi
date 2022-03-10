@@ -58,8 +58,8 @@ public class Adaptador extends RecyclerView.Adapter<viewHolder> {
         }
         // holder.descripcion.setText(ListaObjeto.get(position).getDescripcion());
         holder.aportaciones.setText(Integer.toString(ListaObjeto.get(position).getAportacionesSeta()));
-        holder.likes.setText(Integer.toString(ListaObjeto.get(position).getLikesSeta()));
 
+        /*
         if (ListaObjeto.get(position).getWebSeta() != ""){
 
             holder.web.setText(ListaObjeto.get(position).getWebSeta());
@@ -69,20 +69,22 @@ public class Adaptador extends RecyclerView.Adapter<viewHolder> {
             holder.web.setVisibility(View.GONE);
         }
 
+         */
+
         String urlfoto = ListaObjeto.get(position).getLogoSeta();
         // Bitmap foto = new DownloadFilesTask().execute(urlfoto);
 
         //Comprobamos el estado de la conexión para cargar las fotos desde DB o desde URL
         if(Connected==true){
             //HAY CONEXIÓN, CARGAMOS DESDE URL
-            Picasso.with(holder.animation.getContext()).load(urlfoto).into(holder.logo);
+            Picasso.with(holder.logo.getContext()).load(urlfoto).into(holder.logo);
         } else {
             //NO HAY CONEXIÓN, CARGAMOS DESDE DB LOCAL
-            Picasso.with(holder.animation.getContext()).load(new File(urlfoto)).into(holder.logo);
+            Picasso.with(holder.logo.getContext()).load(new File(urlfoto)).into(holder.logo);
         }
 
 
-        ContextWrapper cw = new ContextWrapper(holder.animation.getContext());
+        //ContextWrapper cw = new ContextWrapper(holder.animation.getContext());
 
 
         /* Esto era para que cargase las imagenes desde local
@@ -90,13 +92,13 @@ public class Adaptador extends RecyclerView.Adapter<viewHolder> {
         File mypath=new File(directory,"profile.jpg");
         Log.d("adaptador",mypath.getAbsolutePath());
         Picasso.with(holder.animation.getContext()).load(mypath).into(holder.logo); */
-
+        /*
         if(ListaObjeto.get(position).getLegustaSeta() == 1) {
             holder.animation.setProgress(1);
         } else {
             holder.animation.setProgress(0.2f);
         }
-
+        */
     }
 
     @Override

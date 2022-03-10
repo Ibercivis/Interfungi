@@ -62,16 +62,13 @@ public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         descripcion = itemView.findViewById(R.id.descripcion);
         aportaciones = itemView.findViewById(R.id.numaportaciones);
 
-        animation = itemView.findViewById(R.id.animation_view);
-        likes = itemView.findViewById(R.id.numeroLikes);
+
         ListaProyectos = datos;
         card = itemView.findViewById(R.id.carta);
         logo= itemView.findViewById(R.id.logo_proyecto);
-        buttonViewOptions = itemView.findViewById(R.id.textViewOptions);
-        web = itemView.findViewById(R.id.sitioweb);
+
         iconCreaObservacion = itemView.findViewById(R.id.iconCreaObervacion);
-        animation.setOnClickListener(this);
-        buttonViewOptions.setOnClickListener(this);
+
     }
 
     @Override

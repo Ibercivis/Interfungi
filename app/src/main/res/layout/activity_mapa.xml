@@ -208,6 +208,7 @@
                     >
 
                     <CheckBox
+                        android:id="@+id/check_curiosidad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"/>
@@ -547,13 +548,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center_horizontal"
                     android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:gravity="end"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginEnd="8dp">
 
                         <TextView
@@ -561,6 +563,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
+                            android:layout_gravity="center_horizontal"
                             android:text="Atributo 1:"
                             android:fontFamily="@font/noto_sans"
                             android:textColor="#0A0909"
@@ -568,20 +571,7 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
 
-                        <TextView
-                            android:id="@+id/respuesta_at3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Atributo 1"
-                            android:textSize="15dp"
-                            android:fontFamily="@font/noto_sans"/>
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -1469,7 +1459,7 @@
 
                     <Button
                         android:id="@+id/borrar_marcador"
-                        android:background="#F44336"
+                        android:background="#B53026"
                         android:layout_width="200dp"
                         android:layout_height="35dp"
                         android:layout_marginTop="12dp"

@@ -15,7 +15,7 @@ import com.ibercivis.interfungi.db.entities.TiposDeSetas;
 
         TiposDeSetas.class
 
-}, version = 2 )
+}, version = 3 )
 public abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase INSTANCE;

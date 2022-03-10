@@ -11,7 +11,7 @@
     <string name="popup_wait">Por favor, espere...</string>
 
     <string name="card1">Esta seta ha sido vista</string>
-    <string name="card2">veces</string>
+    <string name="card2"> veces</string>
     <string name="card3">Me Gusta</string>
     <string name="card4">Participar</string>
 
@@ -38,15 +38,15 @@
     <string name="main4">¿Qué es Interfungi?</string>
 
     <string name="mainmenu1">Home</string>
-    <string name="mainmenu2">Proyectos</string>
-    <string name="mainmenu3">Crear proyecto</string>
+    <string name="mainmenu2">Catálogo</string>
+    <string name="mainmenu3">Añadir observación</string>
     <string name="mainmenu4">Usuario</string>
-    <string name="mainmenu5">Mis proyectos</string>
+    <string name="mainmenu5">Mis observaciones</string>
     <string name="mainmenu6">Log out</string>
 
     <string name="cardmenu1">Descargar todos los marcadores</string>
-    <string name="cardmenu2">Editar proyecto</string>
-    <string name="cardmenu3">Borrar proyecto</string>
+    <string name="cardmenu2">Editar marcador</string>
+    <string name="cardmenu3">Borrar marcador</string>
 
     <string name="searcher">Buscador</string>
 
@@ -158,7 +158,7 @@
 
     <string name="privado">Este es un proyecto privado y requiere de contraseña para participar.</string>
 
-    <string name="user1">Mis proyectos:</string>
+    <string name="user1">Mis observaciones:</string>
     <string name="user2">Todavía no has creado ningún proyecto.</string>
     <string name="user3">Mis Observaciones:</string>
     <string name="user4">Todavía no has dado Me Gusta a ningún proyecto. Recuerda dar Me Gusta a los proyectos en los que participas para que aparezcan aquí.</string>
@@ -181,8 +181,8 @@
         sobre los patrones de fructificación de las especies fúngicas, las áreas de producción y el
         potencial productivo. Igualmente, permitirá transferir de nietos a abuelos el uso de las redes
         sociales y aplicaciones informáticas facilitadoras de la generación de los datos del proyecto</string>
-    <string name="seta_sincortar">Seta sin cortar</string>
-    <string name="seta_cortada">Seta cortada</string>
+    <string name="seta_sincortar">Seta sin recolectar</string>
+    <string name="seta_cortada">Seta recolectada</string>
     <string name="selecciona_seta">¿Qué especie has identificado?</string>
     <string name="interfungi_website">Ir al sitio web</string>
 

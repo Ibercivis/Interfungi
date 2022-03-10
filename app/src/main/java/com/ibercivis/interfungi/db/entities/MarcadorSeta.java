@@ -27,7 +27,10 @@ public class MarcadorSeta {
     public String fechaCorte;
     @ColumnInfo(name = "Observaciones")
     public String atributo1;
-
+    @ColumnInfo(name = "Especie")
+    public String atributo2;
+    @ColumnInfo(name = "Curiosidad")
+    public String atributo3;
     public int getIdPropioMarcador() {
         return idPropio;
     }
@@ -106,5 +109,21 @@ public class MarcadorSeta {
 
     public void setAtributo1Marcador(String atributo1) {
         this.atributo1 = atributo1;
+    }
+
+    public String getAtributo2Marcador() {
+        return atributo2;
+    }
+
+    public void setAtributo2Marcador(String atributo2) {
+        this.atributo2 = atributo2;
+    }
+
+    public String getAtributo3Marcador() {
+        return atributo3;
+    }
+
+    public void setAtributo3Marcador(String atributo3) {
+        this.atributo3 = atributo3;
     }
 }

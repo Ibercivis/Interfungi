@@ -125,7 +125,7 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
                 startActivity(intent);
                 break;
             case R.id.nav_crear:
-                Intent intent2 = new Intent(getApplicationContext(), CrearProyecto.class);
+                Intent intent2 = new Intent(getApplicationContext(), Mapa2.class);
                 startActivity(intent2);
                 break;
             case R.id.nav_logout:

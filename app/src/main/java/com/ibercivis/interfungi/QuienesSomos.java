@@ -83,7 +83,7 @@ public class QuienesSomos extends AppCompatActivity implements NavigationView.On
                 startActivity(intent2);
                 break;
             case R.id.nav_crear:
-                Intent intent3 = new Intent(getApplicationContext(), CrearProyecto.class);
+                Intent intent3 = new Intent(getApplicationContext(), Mapa2.class);
                 startActivity(intent3);
                 break;
             case R.id.nav_logout:

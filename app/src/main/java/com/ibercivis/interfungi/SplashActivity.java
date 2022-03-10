@@ -46,8 +46,10 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
 
+
         /* AQUÍ SE HACEN LAS PETICIONES DE PERMISOS QUE VA A NECESITAR LA APP: UBICACIÓN, ACCESO A ESCRITURA PARA LOS TILES DE LOS MAPAS, ACCESO A LA CÁMARA*/
 
+        /*
         if(SDK_INT >= 30){
             if(!Environment.isExternalStorageManager()){
                 Snackbar.make(findViewById(android.R.id.content), "Permission needed!", Snackbar.LENGTH_INDEFINITE)
@@ -82,6 +84,8 @@ public class SplashActivity extends AppCompatActivity {
             return ;
         }
 
+
+         */
         //Animations
 
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);

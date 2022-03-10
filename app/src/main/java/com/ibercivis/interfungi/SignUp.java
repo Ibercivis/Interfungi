@@ -1,9 +1,18 @@
 package com.ibercivis.interfungi;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static android.os.Build.VERSION.SDK_INT;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.ibercivis.interfungi.clases.SessionManager;
 import com.ibercivis.interfungi.R;
@@ -34,14 +44,59 @@ public class SignUp extends AppCompatActivity {
 
     String error_check;
 
-    Button btn_login;
+    LinearLayout lopd;
+
+    Button btn_login, btn_acept_datos, btn_cancel_datos, btn_sign;
+
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        //PERMISOS
+
+        if(SDK_INT >= 30){
+            if(!Environment.isExternalStorageManager()){
+                Snackbar.make(findViewById(android.R.id.content), "Permission needed!", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Settings", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                try {
+                                    Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+                                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
+                                    startActivity(intent);
+                                } catch (Exception ex){
+                                    Intent intent = new Intent();
+                                    intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                                    startActivity(intent);
+                                }
+                            }
+                        })
+                        .show();
+            } }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED  ){
+            if (SDK_INT >= Build.VERSION_CODES.R) {
+                requestPermissions(new String[]{
+                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+            }
+
+            recreate();
+
+            return ;
+        }
+
         btn_login = findViewById(R.id.btn_back);
+        btn_sign = findViewById(R.id.entrar_btn);
+
+        lopd = findViewById(R.id.proteccion_datos);
+        btn_acept_datos = findViewById(R.id.acept_datos);
+        btn_cancel_datos = findViewById(R.id.cancel_datos);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,11 +104,33 @@ public class SignUp extends AppCompatActivity {
                 openLogin();
             }
         });
+
+        btn_sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lopd.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn_acept_datos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signupRequest();
+            }
+        });
+
+        btn_cancel_datos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lopd.setVisibility(View.GONE);
+            }
+        });
     }
 
-    public void signupRequest (View view) {
+    public void signupRequest () {
         final LinearLayout cargar = findViewById(R.id.cargando);
 
+        lopd.setVisibility(View.GONE);
         cargar.setVisibility(View.VISIBLE);
         signup_username_textview =  findViewById(R.id.signup_user);
         signup_email_textview =  findViewById(R.id.signup_email);

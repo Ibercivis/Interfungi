@@ -115,7 +115,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@color/primaryLightColor"
-            android:onClick="signupRequest"
             android:text="@string/sign7"
             android:textColor="#fff"
             android:transitionName="btn1_tran" />
@@ -131,6 +130,64 @@
         android:fontFamily="@font/antic"
         android:text="@string/sign8"
         android:transitionName="btn2_tran"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/proteccion_datos"
+        android:layout_width="match_parent"
+        android:layout_height="770dp"
+        android:background="#A4363030"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/marcobotonsolido">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROTECCIÓN DE DATOS"
+            android:fontFamily="sans-serif-condensed"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/cancel_datos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/primaryColor"
+                android:text="volver"
+                android:textColor="#fff"
+                android:layout_marginRight="16dp"/>
+
+            <Button
+                android:id="@+id/acept_datos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/primaryLightColor"
+                android:text="acepto"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     </LinearLayout>
 

@@ -3,13 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@drawable/bluebackground"
+    android:background="#00FFFFFF"
     android:gravity="bottom"
+
     android:padding="24dp">
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/interfungi_marron"/>
 
     <TextView

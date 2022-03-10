@@ -296,6 +296,39 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cargando"
+            android:layout_width="match_parent"
+            android:layout_height="770dp"
+            android:background="#A4363030"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/marcobotonsolido">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Actualizando base de datos..."
+                    android:fontFamily="sans-serif-condensed"/>
+
+                <ProgressBar
+                    android:layout_marginTop="8dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,19 +73,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="6dp"
                 android:fontFamily="@font/noto_sans"
                 android:text="Descripción limitada a 240 caracteres que pretende explicar el objetivo del proyecto."
                 android:textColor="#423C3C"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/sitioweb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:autoLink="web"
-                android:text="www.url.es" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="2dp"
                     android:layout_marginLeft="10dp"
                     android:text="@string/card1"
                     android:textColor="#4E4A4A"
@@ -106,8 +99,9 @@
                     android:id="@+id/numaportaciones"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="2dp"
                     android:layout_marginLeft="1dp"
+                    android:layout_marginHorizontal="4dp"
                     android:text="16"
                     android:textColor="#4E4A4A"
                     android:textSize="13sp"
@@ -116,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="2dp"
                     android:layout_marginLeft="1dp"
                     android:text="@string/card2"
                     android:textColor="#4E4A4A"
@@ -127,55 +121,9 @@
 
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-15dp"
-                android:layout_marginBottom="-5dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="-45dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toLeftOf="@id/animation_view"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="@string/card3" />
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animation_view"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="right"
-                    android:layout_marginEnd="40dp"
-                    app:lottie_autoPlay="false"
-                    app:lottie_fileName="347-like.json"
-                    app:lottie_imageAssetsFolder="assets"
-                    app:lottie_loop="false"
-                    app:lottie_progress="0.2" />
 
-                <TextView
-                    android:id="@+id/numeroLikes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="-45dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@id/animation_view"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="15" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/textViewOptions"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:gravity="center_horizontal"
-                android:text="&#8942;"
-                android:textAppearance="?android:textAppearanceLarge" />
 
             <LinearLayout
                 android:layout_width="0dp"

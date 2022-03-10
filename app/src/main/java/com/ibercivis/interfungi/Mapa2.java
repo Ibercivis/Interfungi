@@ -10,10 +10,12 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -33,6 +35,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -104,6 +107,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -122,13 +126,13 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     Toolbar toolbar;
     RelativeLayout paraMapa;
     LinearLayout layout_marcador, layout_foto, atri1;
-    LinearLayout layout_atributo1;
+    LinearLayout layout_atributo1, layout_atributo2, layout_atributo3;
     TextInputLayout titulo1;
     TextInputEditText edit_atri1;
     ImageView marco_foto;
     LinearLayout marcador_mostrado, layout_info;
-    TextView titulo_addmarker, enunciado_atri1;
-    TextView respuesta_atri1;
+    TextView titulo_addmarker, enunciado_atri1, enunciado_atri2, enunciado_atri3;
+    TextView respuesta_atri1, respuesta_atri2, respuesta_atri3;
     Button back, back_info;
     Button cancelar, aceptar, btnfoto, btnfoto2, btndelete, btnedit;
     double mLatitude, mLongitude;
@@ -150,6 +154,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     String urlfoto;
     TextView txt_info;
     ImageView btninfo1, btninfo2, btninfo3, btninfo4, btninfo5, btninfo6, btninfo7, btninfo8, btninfo9, btninfo10, btninfo11, btninfo12, btninfo13, btninfo14, btninfo15, btninfo16, btninfo17, btninfo18, btninfo19, btninfo20, btninfo21, btninfo22, btninfo23;
+    CheckBox checkBox;
+    TextView especie_identificada;
 
     String info_atributo1, info_atributo2, info_atributo3, info_atributo4, info_atributo5, info_atributo6, info_atributo7, info_atributo8, info_atributo9, info_atributo10, info_atributo11, info_atributo12, info_atributo13, info_atributo14, info_atributo15, info_atributo16, info_atributo17, info_atributo18, info_atributo19, info_atributo20, info_atributo21, info_atributo22, info_atributo23;
 
@@ -204,12 +210,19 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         titulo_addmarker = findViewById(R.id.title_addmarker);
         copyrightTxt = findViewById(R.id.txtCopyright);
         enunciado_atri1 = findViewById(R.id.enunciado_at1);
+        enunciado_atri2 = findViewById(R.id.enunciado_at2);
+        enunciado_atri3 = findViewById(R.id.enunciado_at3);
+        checkBox = findViewById(R.id.check_curiosidad);
+        especie_identificada = findViewById(R.id.especie_identificada);
 
 
         respuesta_atri1 = findViewById(R.id.respuesta_at1);
+        respuesta_atri2 = findViewById(R.id.respuesta_at2);
 
 
         layout_atributo1 = findViewById(R.id.marco_atributo1);
+        layout_atributo2 = findViewById(R.id.marco_atributo2);
+        layout_atributo3 = findViewById(R.id.marco_atributo3);
 
 
         layout_marcador = findViewById(R.id.marco_marker);
@@ -292,7 +305,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
         if (SDK_INT >= 30) {
             if (!Environment.isExternalStorageManager()) {
-                Snackbar.make(findViewById(android.R.id.content), "Permission needed!", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(findViewById(android.R.id.content), "¡Permisos necesarios para ver el mapa!", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Settings", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -616,7 +629,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivity(intent2);
                 break;
             case R.id.nav_crear:
-                Intent intent3 = new Intent(getApplicationContext(), CrearProyecto.class);
+                Intent intent3 = new Intent(getApplicationContext(), Mapa2.class);
                 startActivity(intent3);
                 break;
 
@@ -712,9 +725,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
         String resultado = "";
 
-        if (marcadortipo.getNum_atributos() == 1) {
-            resultado = marcadortipo.getAtributo1() + ": " + marcador.getAtributo1();
-        }
+        if (marcador.getAtributo3().equals("CURIOSIDAD")) {
+            resultado = "¡Es una curiosidad!" + "<br>" + "Especie: " + marcador.getAtributo2() + "<br>" + marcadortipo.getAtributo1() + ": " + marcador.getAtributo1();
+        } else resultado = "Especie: " + marcador.getAtributo2() + "<br>" + marcadortipo.getAtributo1() + ": " + marcador.getAtributo1();
 
         return resultado;
     }
@@ -886,6 +899,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
             Bitmap bitmap;
             Bitmap bitmap1;
+            Bitmap rotatedBitmap;
+            Bitmap rotatedBitmap1;
             if (photoURI != null) {
                 try {
                     Log.d("Camera PhotoURI", photoURI.toString());
@@ -896,13 +911,17 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
                     scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 80, arrayParaBlob);
 
-                    base64String = getBase64String(scaledBitmap); // foto en base64
+                    rotatedBitmap = rotateImageIfRequired(this, scaledBitmap, photoURI);
+
+
+
+                    base64String = getBase64String(rotatedBitmap); // foto en base64
 
                     foto_blob = arrayParaBlob.toByteArray();
                     String debugfoto = String.valueOf(foto_blob);
 
-                    miniatura_camara.setImageBitmap(bitmap);
-                    miniatura_camara.setRotation(0);
+                    miniatura_camara.setImageBitmap(rotatedBitmap);
+                    //miniatura_camara.setRotation(0);
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -916,14 +935,17 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                     bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI1);
                     Bitmap scaledBitmap1 = getScaledBitmap(bitmap1, 800, 600);
 
-                    base64String1 = getBase64String(bitmap1); // foto en base64
-
                     scaledBitmap1.compress(Bitmap.CompressFormat.PNG, 80, arrayParaBlob1);
+
+                    rotatedBitmap1 = rotateImageIfRequired(this, scaledBitmap1, photoURI1);
+
+                    base64String1 = getBase64String(rotatedBitmap1); // foto en base64
+
 
                     foto_blob1 = arrayParaBlob1.toByteArray();
 
-                    miniatura_camara1.setImageBitmap(bitmap1);
-                    miniatura_camara1.setRotation(0);
+                    miniatura_camara1.setImageBitmap(rotatedBitmap1);
+                    //miniatura_camara1.setRotation(0);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -938,6 +960,37 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             }*/
 
         }
+    }
+
+    private static Bitmap rotateImageIfRequired(Context context, Bitmap img, Uri selectedImage) throws IOException {
+
+        InputStream input = context.getContentResolver().openInputStream(selectedImage);
+        ExifInterface ei;
+        if (Build.VERSION.SDK_INT > 23)
+            ei = new ExifInterface(input);
+        else
+            ei = new ExifInterface(selectedImage.getPath());
+
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+        switch (orientation) {
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return rotateImage(img, 90);
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return rotateImage(img, 180);
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return rotateImage(img, 270);
+            default:
+                return img;
+        }
+    }
+
+    private static Bitmap rotateImage(Bitmap img, int degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+        img.recycle();
+        return rotatedImg;
     }
 
     private Bitmap getScaledBitmap(Bitmap b, int reqWidth, int reqHeight) {
@@ -1331,6 +1384,10 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 login_params.put("longitud", String.valueOf(longitude));
                 login_params.put("fechaCorte", date);
                 login_params.put("atributo1", edit_atri1.getText().toString());
+                login_params.put("atributo2", especie_identificada.getText().toString());
+                if(checkBox.isChecked() == true){
+                    login_params.put("atributo3", "CURIOSIDAD");
+                }
 
                 Log.d("Date", date);
 
@@ -1397,6 +1454,10 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         marcador.setLongitudMarcador(String.valueOf(currentLocation.getLongitude()));
         marcador.setFechaCorteMarcador(date);
         marcador.setAtributo1Marcador(edit_atri1.getText().toString());
+        marcador.setAtributo2Marcador(especie_identificada.getText().toString());
+        if(checkBox.isChecked() == true){
+            marcador.setAtributo3Marcador("CURIOSIDAD");
+        }
 
         repo.insertMarcadorSetaRepo(marcador);
 
@@ -1510,6 +1571,10 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 login_params.put("longitud", marcadorSeta.getLongitudMarcador());
                 login_params.put("fechaCorte", marcadorSeta.getFechaCorteMarcador());
                 login_params.put("atributo1", marcadorSeta.getAtributo1Marcador());
+                login_params.put("atributo2", marcadorSeta.getAtributo2Marcador());
+                if(marcadorSeta.getAtributo3Marcador() == "CURIOSIDAD"){
+                    login_params.put("atributo3", marcadorSeta.getAtributo3Marcador());
+                }
 
                 Log.d("Date", date);
 
@@ -1614,11 +1679,25 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             mostrarFoto(marcador);
         }
         if (marcadorTipo.getNum_atributos() == 1) {
-            enunciado_atri1.setText(marcadorTipo.getAtributo1() + ":");
-            respuesta_atri1.setText(marcador.getAtributo1());
+            enunciado_atri1.setText("Especie:");
+            respuesta_atri1.setText(marcador.getAtributo2());
             enunciado_atri1.setVisibility(View.VISIBLE);
             respuesta_atri1.setVisibility(View.VISIBLE);
             layout_atributo1.setVisibility(View.VISIBLE);
+
+            layout_atributo2.setVisibility(View.VISIBLE);
+            enunciado_atri2.setVisibility(View.VISIBLE);
+            respuesta_atri2.setVisibility(View.VISIBLE);
+            enunciado_atri2.setText(marcadorTipo.getAtributo1() + ":");
+            respuesta_atri2.setText(marcador.getAtributo1());
+
+
+            if(marcador.getAtributo3().equals("CURIOSIDAD")){
+                layout_atributo3.setVisibility(View.VISIBLE);
+                enunciado_atri3.setVisibility(View.VISIBLE);
+                enunciado_atri3.setText("¡Es una curiosidad!");
+            }
+
         }
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -1649,8 +1728,15 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         titulo_addmarker.setText(getResources().getString(R.string.mapa4));
 
         edit_atri1.setText(marker.getAtributo1());
+        especie_identificada.setText(marker.getAtributo2());
 
         titulo1.setHint(marcador.getAtributo1());
+
+        if(marker.getAtributo3().equals("CURIOSIDAD")){
+            checkBox.setChecked(true);
+        } else checkBox.setChecked(false);
+
+        cargarCatalogoSetas(true);
 
 
 
@@ -1752,8 +1838,10 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 login_params.put("latitud", String.valueOf(marker.getLatitud()));
                 login_params.put("longitud", String.valueOf(marker.getLongitud()));
                 login_params.put("atributo1", edit_atri1.getText().toString());
-                login_params.put("atributo2", "");
-                login_params.put("atributo3", "");
+                login_params.put("atributo2", especie_identificada.getText().toString());
+                if(checkBox.isChecked() == true){
+                    login_params.put("atributo3", "CURIOSIDAD");
+                }
                 login_params.put("atributo4", "");
                 login_params.put("atributo5", "");
                 login_params.put("atributo6", "");
