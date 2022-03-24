@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class SignUp extends AppCompatActivity {
     String error_check;
 
     LinearLayout lopd;
+    CheckBox checkDatos1, checkDatos2;
 
     Button btn_login, btn_acept_datos, btn_cancel_datos, btn_sign;
 
@@ -56,7 +58,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         //PERMISOS
-
+        /*
         if(SDK_INT >= 30){
             if(!Environment.isExternalStorageManager()){
                 Snackbar.make(findViewById(android.R.id.content), "Permission needed!", Snackbar.LENGTH_INDEFINITE)
@@ -82,13 +84,26 @@ public class SignUp extends AppCompatActivity {
                 PackageManager.PERMISSION_GRANTED  ){
             if (SDK_INT >= Build.VERSION_CODES.R) {
                 requestPermissions(new String[]{
-                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
                         REQUEST_CODE_ASK_PERMISSIONS);
             }
 
             recreate();
 
             return ;
+        }
+        */
+        if ( Build.VERSION.SDK_INT >= 23){
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED  ){
+                requestPermissions(new String[]{
+                                android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+
+                recreate();
+
+                return ;
+            }
         }
 
         btn_login = findViewById(R.id.btn_back);
@@ -97,6 +112,9 @@ public class SignUp extends AppCompatActivity {
         lopd = findViewById(R.id.proteccion_datos);
         btn_acept_datos = findViewById(R.id.acept_datos);
         btn_cancel_datos = findViewById(R.id.cancel_datos);
+
+        checkDatos1 = findViewById(R.id.checkdatos1);
+        checkDatos2 = findViewById(R.id.checkdatos2);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +133,28 @@ public class SignUp extends AppCompatActivity {
         btn_acept_datos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signupRequest();
+                if(checkDatos1.isChecked() == true) {
+                    if(checkDatos2.isChecked() == true){
+                        signupRequest();
+                    } else {
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast;
+                        CharSequence text;
+
+                        text = "Para poder registrarte debes aceptar la Política de Protección de Datos.";
+                        toast = Toast.makeText(getApplicationContext(), text, duration);
+                        toast.show();
+                    }
+
+                } else {
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast;
+                    CharSequence text;
+
+                    text = "Para poder registrarte debes aceptar la Política de Protección de Datos.";
+                    toast = Toast.makeText(getApplicationContext(), text, duration);
+                    toast.show();
+                }
             }
         });
 

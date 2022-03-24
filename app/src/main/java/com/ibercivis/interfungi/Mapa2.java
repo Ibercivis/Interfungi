@@ -23,6 +23,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.InputType;
@@ -194,6 +196,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        ContextWrapper cw = this;
+        suggestedFix(cw);
+
         /*-----Hooks-----*/
         map = findViewById(R.id.map);
         drawerLayout = findViewById(R.id.drawer_layout4);
@@ -300,7 +305,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
+        /*
         //PERMISOS PARA MANAGE_EXTERNAL_STORAGE Y QUE FUNCIONEN LOS TILES DEL MAPA EN SDK>30
 
         if (SDK_INT >= 30) {
@@ -324,14 +329,14 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                         .show();
             }
         }
-
+        */
         // LOCALIZACIÓN
 
         if (Build.VERSION.SDK_INT >= 23) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
                     PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{
-                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
                         REQUEST_CODE_ASK_PERMISSIONS);
 
                 recreate();
@@ -339,6 +344,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 return;
             }
         }
+
 
         final LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -595,7 +601,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         });
 
 
-        int duration = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_LONG;
         Toast toast;
         CharSequence text;
 
@@ -2137,6 +2143,21 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         seta.setLogoSeta(mypath.getAbsolutePath());
         repo.insertTiposDeSetasRepo(seta);
         return mypath.getAbsolutePath();
+    }
+
+    private void suggestedFix(final ContextWrapper contextWrapper) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            return;
+        }
+        final File root = contextWrapper.getFilesDir();
+        final File osmdroidBasePath = new File(root, "osmdroid");
+        osmdroidBasePath.mkdirs();
+        Configuration.getInstance().setOsmdroidBasePath(osmdroidBasePath);
+        org.osmdroid.config.IConfigurationProvider osmConf = org.osmdroid.config.Configuration.getInstance();
+// NOT: File basePath = new File(getCacheDir().getAbsolutePath(), "osmdroid");
+// NOT: osmConf.setOsmdroidBasePath(basePath);
+        File tileCache = new File(getCacheDir().getAbsolutePath(), "tile");
+        osmConf.setOsmdroidTileCache(tileCache);
     }
 
 }

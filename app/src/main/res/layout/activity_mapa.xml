@@ -235,7 +235,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txt_atributo1"
-                    android:hint="Atributo 1"
+                    android:hint="Observaciones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">

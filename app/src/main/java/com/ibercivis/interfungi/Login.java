@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
         display_recover = findViewById(R.id.recover_layout);
 
         // SOLICITAR PERMISOS
-
+        /*
         if(SDK_INT >= 30){
             if(!Environment.isExternalStorageManager()){
                 Snackbar.make(findViewById(android.R.id.content), "Permission needed!", Snackbar.LENGTH_INDEFINITE)
@@ -107,7 +107,7 @@ public class Login extends AppCompatActivity {
                 PackageManager.PERMISSION_GRANTED  ){
             if (SDK_INT >= Build.VERSION_CODES.R) {
                 requestPermissions(new String[]{
-                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
                         REQUEST_CODE_ASK_PERMISSIONS);
             }
 
@@ -115,7 +115,19 @@ public class Login extends AppCompatActivity {
 
             return ;
         }
+        */
+        if ( Build.VERSION.SDK_INT >= 23){
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED  ){
+                requestPermissions(new String[]{
+                                android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                        REQUEST_CODE_ASK_PERMISSIONS);
 
+                recreate();
+
+                return ;
+            }
+        }
         /*-----Button Functions-----*/
 
         btnsignup.setOnClickListener(new View.OnClickListener() {
