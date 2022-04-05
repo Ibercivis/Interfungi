@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ibercivis.interfungi.EditarProyecto"
+    tools:context="com.ibercivis.interfungiapp.EditarProyecto"
     android:id="@+id/drawer_layout3"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">

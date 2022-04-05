@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/add_icon.xml" value="0.35648148148148145" />
         <entry key="app/src/main/res/drawable/frame.xml" value="0.5010416666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/ic_interfungi_seta_big.xml" value="0.7157407407407408" />
         <entry key="app/src/main/res/drawable/interfungi_seta.xml" value="0.7157407407407408" />
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.31458966565349544" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ibercivis.interfungi.Login"
+    tools:context="com.ibercivis.interfungiapp.Login"
     android:background="#ffffff">
 
     <LinearLayout

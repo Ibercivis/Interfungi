@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Interfungi</string>
     <string name="app_claim">Red de observadores intergeneracionales del reino fungi</string>
-    <string name="app_authors">Ibercivis Cita</string>
+    <string name="app_authors">Ibercivis - CITA</string>
 
     <string name="navigation_open_drawer">Open Navigation Drawer</string>
     <string name="navigation_close_drawer">Close Navigation Drawer</string>

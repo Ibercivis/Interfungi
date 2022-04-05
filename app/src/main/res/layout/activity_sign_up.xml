@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ibercivis.interfungi.SignUp"
+    tools:context="com.ibercivis.interfungiapp.SignUp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -174,8 +174,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed"
                     android:text="Para el disfrute de nuestra app, usted acepta nuestra Política de
-Privacidad"
-                    android:textSize="12sp" />
+Privacidad: https://ibercivis.es/interfungi-politica-de-privacidad/"
+                    android:textSize="12sp"
+                    android:autoLink="phone|web"/>
 
             </LinearLayout>
 

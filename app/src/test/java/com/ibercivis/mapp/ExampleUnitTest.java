@@ -1,4 +1,4 @@
-package com.ibercivis.interfungi;
+package com.ibercivis.interfungiapp;
 
 import org.junit.Test;
 

@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ibercivis.interfungi.add_marker">
+    tools:context="com.ibercivis.interfungiapp.add_marker">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

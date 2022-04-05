@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ibercivis.interfungi">
+    package="com.ibercivis.interfungiapp">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -31,35 +31,35 @@
             android:resource="@xml/frame" />
 
         <activity
-            android:name="com.ibercivis.interfungi.BorrarProyecto"
+            android:name="com.ibercivis.interfungiapp.BorrarProyecto"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.DescargarDatos"
+            android:name="com.ibercivis.interfungiapp.DescargarDatos"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.ProyectoPrivado"
+            android:name="com.ibercivis.interfungiapp.ProyectoPrivado"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.Usuario"
+            android:name="com.ibercivis.interfungiapp.Usuario"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.QuienesSomos"
+            android:name="com.ibercivis.interfungiapp.QuienesSomos"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.add_marker"
+            android:name="com.ibercivis.interfungiapp.add_marker"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.Mapa2"
+            android:name="com.ibercivis.interfungiapp.Mapa2"
             android:screenOrientation="portrait"
             android:exported="true"/>
         <!--activity
             android:name=".Add"
             android:screenOrientation="portrait" /-->
         <activity
-            android:name="com.ibercivis.interfungi.Login"
+            android:name="com.ibercivis.interfungiapp.Login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.SplashActivity"
+            android:name="com.ibercivis.interfungiapp.SplashActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -69,22 +69,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ibercivis.interfungi.SignUp"
+            android:name="com.ibercivis.interfungiapp.SignUp"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.ListadoProyectos"
+            android:name="com.ibercivis.interfungiapp.ListadoProyectos"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.CrearProyecto"
+            android:name="com.ibercivis.interfungiapp.CrearProyecto"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.CrearObservacion"
+            android:name="com.ibercivis.interfungiapp.CrearObservacion"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.MainActivity"
+            android:name="com.ibercivis.interfungiapp.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ibercivis.interfungi.EditarProyecto"
+            android:name="com.ibercivis.interfungiapp.EditarProyecto"
             android:screenOrientation="portrait" />
 
         <meta-data

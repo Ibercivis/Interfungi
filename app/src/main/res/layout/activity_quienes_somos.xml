@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ibercivis.interfungi.QuienesSomos"
+    tools:context="com.ibercivis.interfungiapp.QuienesSomos"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
@@ -88,7 +88,7 @@
 
         </LinearLayout>
 
-        <com.ibercivis.interfungi.clases.JustifyTextView
+        <com.ibercivis.interfungiapp.clases.JustifyTextView
             android:layout_margin="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
