@@ -3,45 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/catalogo_setas_card"
     android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="100dp"
+    android:layout_height="168dp"
     android:layout_margin="10dp"
-    app:cardCornerRadius="5dp"
-    android:elevation="5dp"
+    app:cardCornerRadius="6dp"
+    android:elevation="8dp"
+    android:padding="4dp"
     >
 
     //app:cardBackgroundColor="#2196F3"
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <LinearLayout
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/fondo_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/shape"
+            android:gravity="center"
+            android:padding="4dp"
+            >
 
 
             <ImageView
                 android:id="@+id/foto"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:paddingHorizontal="0dp"
+                android:background="@drawable/round_shape"
                 android:scaleType="centerCrop"
+                android:layout_margin="8dp"
                 android:src="@drawable/ic_image_black_24dp"
                 android:text="Subir Logo"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:elevation="16dp"/>
 
             <TextView
                 android:id="@+id/titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
                 android:fontFamily="@font/noto_sans"
+                android:layout_marginVertical="2dp"
+                android:layout_marginBottom="6dp"
                 android:text="Título"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="14sp" />
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
         </LinearLayout>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

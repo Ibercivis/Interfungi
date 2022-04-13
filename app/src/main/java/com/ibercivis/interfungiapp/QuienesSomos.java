@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.ibercivis.interfungiapp.clases.JustifyTextView;
 import com.ibercivis.interfungiapp.clases.SessionManager;
 import com.ibercivis.interfungiapp.R;
 
@@ -54,6 +55,21 @@ public class QuienesSomos extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+        JustifyTextView txtquienes = findViewById(R.id.texto_quienes);
+        txtquienes.setText("Aragón es una de las comunidades de Europa donde la recolección de setas está más arraigada entre su sociedad. De esa afición surge Interfungi, un proyecto de ciencia ciudadana con los siguientes objetivos:\n" +
+                "\n" +
+                "- Preservar los conocimientos micológicos y transmitirlos a las generaciones más jóvenes. Es decir, conseguir que todo lo que saben los mayores no se pierda\n" +
+                "\n" +
+                "- Conseguir datos (a través de observaciones) que ayudará a los investigadores a determinar el estado y calidad de las zonas de producción. Por ejemplo, creando mapas de presión recolectora.\n" +
+                "\n" +
+                "- Acercar el potencial de las zonas rurales a aquellos que no están familiarizados con esos conocimientos.\n" +
+                "\n" +
+                "¿Quieres ser uno de nuestros observadores?\n" +
+                "¡Con tu participación estás ayudando a conocer y proteger las setas de Aragón!\n" +
+                "\n" +
+                "Interfungi surge del trabajo conjunto de la Fundación Ibercivis y del Centro de Investigación y Tecnología Agroalimentaria de Aragón (CITA).\n" +
+                "\n" +
+                "El proyecto ha sido financiado gracias a FECYT, Fundación Española de Ciencia y Tecnología - Ministerio de Ciencia e Innovación. ");
 
 
 

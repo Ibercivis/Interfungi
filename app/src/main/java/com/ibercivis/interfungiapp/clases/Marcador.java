@@ -50,6 +50,13 @@ public class Marcador {
         this.photo_1 = photo_1;
         this.fechaCorte = fechaCorte;
     }
+    public Marcador(int id, String atributo2, String fechaCorte, String photo_0, String photo_1) {
+        this.id = id;
+        this.atributo2 = atributo2;
+        this.photo_0 = photo_0;
+        this.photo_1 = photo_1;
+        this.fechaCorte = fechaCorte;
+    }
 
     public int getIdUser() {
         return idUser;

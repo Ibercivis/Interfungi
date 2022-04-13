@@ -34,7 +34,8 @@ public class AdaptadorSetas extends RecyclerView.Adapter<ViewHolderSetas> {
     public void onBindViewHolder(@NonNull final ViewHolderSetas holder, int position) {
 
         Log.d("AdaptadorSetas", "OnBindViewHolder");
-        holder.titulo.setText(ListaObjeto.get(position).getFechaCorte());
+        holder.titulo.setText(ListaObjeto.get(position).getAtributo2());
+        holder.titulo2.setText(ListaObjeto.get(position).getFechaCorte());
         String photo_0 = ListaObjeto.get(position).photo_0;
         String photo_1 = ListaObjeto.get(position).photo_1;
         Picasso.with(holder.photo_0.getContext()).load(photo_0).into(holder.photo_0);

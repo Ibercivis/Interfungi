@@ -1,39 +1,39 @@
 <resources>
-    <string name="app_name">Interfungi</string>
-    <string name="app_claim">Red de observadores intergeneracionales del reino fungi</string>
-    <string name="app_authors">Ibercivis - CITA</string>
+    <string name="app_name" translatable="false">Interfungi</string>
+    <string name="app_claim" translatable="false">Red de observadores intergeneracionales del reino fungi</string>
+    <string name="app_authors" translatable="false">Ibercivis - CITA</string>
 
-    <string name="navigation_open_drawer">Open Navigation Drawer</string>
-    <string name="navigation_close_drawer">Close Navigation Drawer</string>
+    <string name="navigation_open_drawer" translatable="false">Open Navigation Drawer</string>
+    <string name="navigation_close_drawer" translatable="false">Close Navigation Drawer</string>
 
-    <string name="base_url">https://interfungi.ibercivis.es</string>
+    <string name="base_url" translatable="false">https://interfungi.ibercivis.es</string>
 
-    <string name="popup_wait">Por favor, espere...</string>
+    <string name="popup_wait" translatable="false">Por favor, espere...</string>
 
-    <string name="card1">Esta seta ha sido vista</string>
-    <string name="card2"> veces</string>
-    <string name="card3">Me Gusta</string>
-    <string name="card4">Participar</string>
+    <string name="card1" translatable="false">Esta seta ha sido vista</string>
+    <string name="card2" translatable="false"> veces</string>
+    <string name="card3" translatable="false">Me Gusta</string>
+    <string name="card4" translatable="false">Participar</string>
 
-    <string name="login1">Bienvenido</string>
-    <string name="login2">Accede con tu usuario</string>
-    <string name="login3">Username</string>
-    <string name="login4">Password</string>
-    <string name="login5">¿Olvidaste tu contraseña?</string>
-    <string name="login6">Entrar</string>
-    <string name="login7">¿Nuevo usuario? Regístrate</string>
+    <string name="login1" translatable="false">Bienvenido</string>
+    <string name="login2" translatable="false">Accede con tu usuario</string>
+    <string name="login3" translatable="false">Username</string>
+    <string name="login4" translatable="false">Password</string>
+    <string name="login5" translatable="false">¿Olvidaste tu contraseña?</string>
+    <string name="login6" translatable="false">Entrar</string>
+    <string name="login7" translatable="false">¿Nuevo usuario? Regístrate</string>
 
-    <string name="sign1">Bienvenido</string>
-    <string name="sign2">Regístrate para comenzar a mapear</string>
-    <string name="sign3">Username</string>
-    <string name="sign4">E-mail</string>
-    <string name="sign5">Contraseña</string>
-    <string name="sign6">Repetir contraseña</string>
-    <string name="sign7">Crear usuario</string>
-    <string name="sign8">¿Ya estás registrado? Accede</string>
+    <string name="sign1" translatable="false">Bienvenido</string>
+    <string name="sign2" translatable="false">Regístrate para comenzar a mapear</string>
+    <string name="sign3" translatable="false">Username</string>
+    <string name="sign4" translatable="false">E-mail</string>
+    <string name="sign5" translatable="false">Contraseña</string>
+    <string name="sign6" translatable="false">Repetir contraseña</string>
+    <string name="sign7" translatable="false">Crear usuario</string>
+    <string name="sign8" translatable="false">¿Ya estás registrado? Accede</string>
 
-    <string name="main1">Catálogo</string>
-    <string name="main2">Crear observación</string>
+    <string name="main1" translatable="false">Catálogo</string>
+    <string name="main2" translatable="false">Crear observación</string>
     <string name="main3">Mis observaciones</string>
     <string name="main4">¿Qué es Interfungi?</string>
 
@@ -67,9 +67,9 @@
     <string name="crear1">Datos del proyecto</string>
     <string name="crear2">Descripción de la observación</string>
     <string name="crear3">Descripción</string>
-    <string name="crear4">Sitio web</string>
-    <string name="crear5">Imagen sin cortar</string>
-    <string name="crear6">Resolución recomendada 200x200</string>
+    <string name="crear4" translatable="false">Sitio web</string>
+    <string name="crear5" translatable="false">Imagen sin cortar</string>
+    <string name="crear6" translatable="false">Resolución recomendada 200x200</string>
     <string name="crear7">Marcadores</string>
     <string name="crear8">Incluye foto"    "</string>
     <string name="crear9">Añade los atributos que necesites (max. 23)</string>
@@ -170,17 +170,20 @@
     <string name="mapa4">Editar Marcador</string>
     <string name="mapa5">Editar</string>
 
-    <string name="quienes">El proyecto tiene como uno de sus principales objetivos conservar el acervo
-        popular de las personas mayores del medio rural, en peligro de desaparición, impulsando el
-        relevo generacional del conocimiento del reino fungi a través de la creación del binomio
-        tutor-mentor micológico rural-urbano con la participación de equipos o parejas de observadores
-        de generaciones diferentes (p.e abuelos y nietos) que fomenten el intercambio de conocimiento entre el mundo rural y el urbano.
+    <string name="quienes">Aragón es una de las comunidades de Europa dónde la recolección de setas está más arraigada entre su sociedad. De esa afición surge Interfungi, un proyecto de ciencia ciudadana con los siguientes objetivos:
 
-        La implicación de los jóvenes a la generación de ciencia ciudadana micológica de la mano de
-        la experiencia de sus mentores permitirá, por una parte, transferir el conocimiento de años
-        sobre los patrones de fructificación de las especies fúngicas, las áreas de producción y el
-        potencial productivo. Igualmente, permitirá transferir de nietos a abuelos el uso de las redes
-        sociales y aplicaciones informáticas facilitadoras de la generación de los datos del proyecto</string>
+- Preservar los conocimientos micológicos y transmitirlos a las generaciones más jóvenes. Es decir, conseguir que todo lo que saben los mayores no se pierda
+
+- Conseguir datos (a través de observaciones) que ayudará a los investigadores a determinar el estado y calidad de las zonas de producción. Por ejemplo, creando mapas de presión recolectora.
+
+- Acercar el potencial de las zonas rurales a aquellos que no están familiarizados con esos conocimientos.
+
+Todos los avances de #Interfungi se publicarán en nuestra newsletter. ¡Subscríbete aquí! - aquí tendrá que ir un link a la web para que la gente se suscriba.-
+
+¿Quieres ser uno de nuestros observadores?
+¡Con tu participación estás ayudando a conocer y proteger las setas de Aragón!
+
+Interfungi surge del trabajo conjunto de la Fundación Ibercivis y del Centro de Investigación y Tecnología Agroalimentaria de Aragón (CITA). El proyecto ha sido financiado gracias a FECYT, Fundación Española de Ciencia y Tecnología - Ministerio de Ciencia e Innovación. </string>
     <string name="seta_sincortar">Seta sin recolectar</string>
     <string name="seta_cortada">Seta recolectada</string>
     <string name="selecciona_seta">¿Qué especie has identificado?</string>

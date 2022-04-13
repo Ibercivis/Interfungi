@@ -49,7 +49,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="#ffffff"
->           android:visibility="gone"><!-- Mover to gone -->
+           android:visibility="gone"><!-- Mover to gone -->
 
             <TextView
                 android:id="@+id/title_addmarker"
@@ -146,7 +146,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/selecciona_seta"
-                    android:textColor="@color/primaryLightColor"/>
+                    android:textColor="@color/primaryLightColor"
+                    android:textSize="16sp"
+                    android:layout_marginVertical="8dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -154,7 +156,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_catalogo_setas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -168,11 +171,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/primaryLightColor" />
-                <TextView
-                    android:id="@+id/especie_identificada_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/primaryLightColor"
+                    android:textSize="16sp"
+                    android:layout_marginVertical="4dp"/>
+
 
             </LinearLayout>
 
@@ -181,7 +183,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -274,10 +277,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
 
                 <Button
                     android:id="@+id/cancel_but"
@@ -396,7 +400,7 @@
         <LinearLayout
             android:id="@+id/cargando"
             android:layout_width="match_parent"
-            android:layout_height="770dp"
+            android:layout_height="match_parent"
             android:background="#A4363030"
             android:gravity="center"
             android:visibility="gone"
@@ -1483,7 +1487,7 @@
 
                     <Button
                         android:id="@+id/cerrar_marcador"
-                        android:background="#419FBB"
+                        android:background="#5E4C33"
                         android:layout_width="200dp"
                         android:layout_height="35dp"
                         android:layout_marginTop="12dp"
@@ -1508,7 +1512,7 @@
         <LinearLayout
             android:id="@+id/displayinfo"
             android:layout_width="match_parent"
-            android:layout_height="770dp"
+            android:layout_height="match_parent"
             android:background="#A4363030"
             android:gravity="center"
             android:visibility="gone"
@@ -1526,7 +1530,9 @@
                     android:id="@+id/text_info"
                     android:layout_marginTop="4dp"
                     android:layout_width="wrap_content"
+                    android:gravity="center_horizontal"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
                     android:text="@string/noInfo"
                     android:fontFamily="sans-serif-condensed"/>
 
@@ -1538,7 +1544,7 @@
                     android:text="@string/volver"
                     android:paddingVertical="-5dp"
                     android:paddingHorizontal="20dp"
-                    android:background="#419FBB"
+                    android:background="@color/primaryColor"
                     android:textColor="#fff"
                     android:layout_gravity="center"/>
 

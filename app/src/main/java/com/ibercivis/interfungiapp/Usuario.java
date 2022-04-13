@@ -184,7 +184,8 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
                             String photo_0 = "https://interfungi.ibercivis.es/uploads/marcadores/"+String.valueOf(id)+".jpg";
                             String photo_1 = "https://interfungi.ibercivis.es/uploads/marcadores/"+String.valueOf(id)+"_1.jpg";
                             String fechaCorte = String.valueOf(jsonArray.getJSONObject(i).get("fechaCorte"));
-                            ListaSetas.add(new Marcador(id, fechaCorte, photo_0, photo_1));
+                            String atributo2 = String.valueOf(jsonArray.getJSONObject(i).get("atributo2"));
+                            ListaSetas.add(new Marcador(id, atributo2, fechaCorte, photo_0, photo_1));
 
                         }
 

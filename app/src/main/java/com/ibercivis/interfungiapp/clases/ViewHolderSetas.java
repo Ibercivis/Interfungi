@@ -17,6 +17,7 @@ import java.util.List;
 public class ViewHolderSetas extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     TextView titulo;
+    TextView titulo2;
     TextView descripcion;
     TextView aportaciones;
     TextView buttonViewOptions;
@@ -35,6 +36,7 @@ public class ViewHolderSetas extends RecyclerView.ViewHolder implements View.OnC
         super(itemView);
 
         titulo = itemView.findViewById(R.id.titulo);
+        titulo2 = itemView.findViewById(R.id.titulo2);
         ListaSetas = datos;
         card = itemView.findViewById(R.id.marcador_card);
         photo_0= itemView.findViewById(R.id.photo_0);

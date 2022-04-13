@@ -345,6 +345,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
         currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
+
         //AQUÍ EMPIEZA EL BARRO DE LA CONEXIÓN O NO CONEXIÓN
 
         boolean connected = false;
@@ -395,6 +396,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
             mLocationOverlay.enableMyLocation();
             mLocationOverlay.setOptionsMenuEnabled(true);
+
+
 
 
             copyrightTxt.setText("");
@@ -592,7 +595,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 cal.setTimeInMillis(tsLong);
                 String date = DateFormat.format("yyyy-MM-dd hh:mm:ss", cal).toString();
 
-                final LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                //final LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
                 if (ActivityCompat.checkSelfPermission(Mapa2.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Mapa2.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
@@ -605,10 +608,18 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                     return;
                 }
                 Location currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                latitude = currentLocation.getLatitude();
-                longitude = currentLocation.getLongitude();
+                if(currentLocation != null) {
+                    latitude = currentLocation.getLatitude();
+                    longitude = currentLocation.getLongitude();
 
-                addmarker(marcador_tipo, true);
+                    addmarker(marcador_tipo, true);
+                } else {
+                    GeoPoint myPoint = mLocationOverlay.getMyLocation();
+                    latitude = myPoint.getLatitude();
+                    longitude = myPoint.getLongitude();
+
+                    addmarker(marcador_tipo, true);
+                }
 
 
                 };
@@ -628,9 +639,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             public void onClick(View v) {
                 layout_info.setVisibility(View.VISIBLE);
                 if (info_atributo1.equals("")) {
-                    txt_info.setText("¿Hay alguna observación que quieras hacer sobre el marcador que vas a subir? Recuerda que puedes participar en el concurso seleccionando la opción anterior, con un máximo de 10 marcadores.");
+                    txt_info.setText("¿Alguna curiosidad sobre la observación que vas a subir? ¡Cuéntanos!");
                 } else {
-                    txt_info.setText("¿Hay alguna observación que quieras hacer sobre el marcador que vas a subir? Recuerda que puedes participar en el concurso seleccionando la opción anterior, con un máximo de 10 marcadores.");
+                    txt_info.setText("¿Alguna curiosidad sobre la observación que vas a subir? ¡Cuéntanos!");
                 }
             }
         });
@@ -737,6 +748,10 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 mapController.animateTo(myPoint);
 
                 mapController.setZoom(17.00);
+                if(myPoint != null){
+                    final Double longitud_reserva = myPoint.getLongitude();
+                    final Double latitud_reserva = myPoint.getLatitude();
+                }
 
             }
         }, milisegundos);
@@ -871,7 +886,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     private void dispatchTakePictureIntent(Integer tipo) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+      //  if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
             File photoFile = null;
             try {
@@ -904,7 +919,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivityForResult(takePictureIntent, REQUEST_CODE_TAKE_PHOTO);
             }
         }
-    }
+    //}
 
     private File createImageFile(Integer tipo) throws IOException {
         // Create an image file name
@@ -1745,8 +1760,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
         if (marcador.getIdUser() == session.getIdUser()) {
 
-            btnedit.setVisibility(View.VISIBLE);
-
+           // btnedit.setVisibility(View.VISIBLE); NO PERMITIMOS EDITAR MARCADORES, SÓLO ELIMINARLOS
+            btnedit.setVisibility(View.GONE);
             btnedit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -2242,6 +2257,13 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         File tileCache = new File(getCacheDir().getAbsolutePath(), "tile");
         osmConf.setOsmdroidTileCache(tileCache);
     }
+
+    private final LocationListener locationListener = new LocationListener() {
+        public void onLocationChanged(Location location) {
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+        }
+    };
 
 }
 
