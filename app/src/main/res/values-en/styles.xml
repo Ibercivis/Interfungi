@@ -7,8 +7,41 @@
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
         <item name="android:statusBarColor">@color/primaryDarkColor</item>
+        <item name="colorControlNormal">@color/textoClaro</item>
+        <item name="android:textColor">@color/textoClaro</item>
+        <item name="android:colorAccent">@color/darkLight</item>
+        <item name="textColorAlertDialogListItem">@color/textoOscuro</item>
+        <item name="android:textColorSecondary">@color/textoOscuro</item>
+        <item name="android:editTextColor">@color/textoClaro</item>
+        <item name="android:textColorHint">@color/textoOscuro</item>
+        <item name="collapseIcon">@color/textoOscuro</item>
+
 
         <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="editText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Customize your theme here. -->
+
+        <item name="colorControlNormal">#FFFFFF</item>
+
+
+
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColor">@color/textoClaro</item>
+        <item name="android:editTextColor">@color/textoClaro</item>
+        <item name="android:textColorHint">@color/textoOscuro</item>
+        <item name="android:background">@color/primaryDarkColor</item>
+    </style>
+
+    <style name="SearchToolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        //toolbar back arrow color
+        <item name="android:textColorSecondary">@color/textoOscuro</item>
+        //toolbar title color
+        <item name="android:textColorPrimary">@color/textoClaro</item>
+        <item name="android:background">@color/primaryDarkColor</item>
     </style>
 
 </resources>

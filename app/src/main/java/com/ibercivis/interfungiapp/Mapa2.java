@@ -487,8 +487,23 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         } else {
 
             layout_marcador.setVisibility(View.VISIBLE);
-            paraMapa.setVisibility(View.GONE);
             cargarCatalogoSetasOffline(connected);
+
+            paraMapa.setVisibility(View.GONE);
+
+            miniatura_camara.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addPhoto(0);
+                }
+            });
+            miniatura_camara1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addPhoto(1);
+                }
+            });
+
 
             aceptar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -608,17 +623,37 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                     return;
                 }
                 Location currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                boolean connected = false;
+                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    //we are connected to a network
+                    connected = true;
+                } else
+                    connected = false;
+
+
                 if(currentLocation != null) {
                     latitude = currentLocation.getLatitude();
                     longitude = currentLocation.getLongitude();
+                    if (connected == true) {
+                        addmarker(marcador_tipo, true);
+                    } else {
+                        cargarCatalogoSetasOffline(connected);
+                        addmarker(marcador_tipo, false);
+                    }
 
-                    addmarker(marcador_tipo, true);
                 } else {
                     GeoPoint myPoint = mLocationOverlay.getMyLocation();
                     latitude = myPoint.getLatitude();
                     longitude = myPoint.getLongitude();
 
-                    addmarker(marcador_tipo, true);
+                    if (connected == true) {
+                        addmarker(marcador_tipo, true);
+                    } else {
+                        cargarCatalogoSetasOffline(connected);
+                        addmarker(marcador_tipo, false);
+                    }
                 }
 
 
@@ -800,7 +835,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         paraMapa.setVisibility(View.GONE);
 
         cargarCatalogoSetas(conectado);
-        if (marcador_tipo.getFoto() == 1) {
+
             layout_foto.setVisibility(View.VISIBLE);
             miniatura_camara.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -814,7 +849,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                     addPhoto(1);
                 }
             });
-        }
+
 
 
         cancelar.setOnClickListener(new View.OnClickListener() {
@@ -1548,14 +1583,34 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             return;
         }
         currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(currentLocation != null) {
+            latitude = currentLocation.getLatitude();
+            longitude = currentLocation.getLongitude();
+
+
+        } else {
+            GpsMyLocationProvider provider = new GpsMyLocationProvider(this.getApplicationContext());
+
+            mLocationOverlay = new MyLocationNewOverlay(provider, map);
+            mLocationOverlay.enableMyLocation();
+            GeoPoint myPoint = mLocationOverlay.getMyLocation();
+            if(myPoint != null){
+                latitude = myPoint.getLatitude();
+                longitude = myPoint.getLongitude();
+            }
+
+
+
+
+        }
 
         marcador.setIdUserMarcador(String.valueOf(session.getIdUser()));
         marcador.setTokenMarcador(session.getToken());
         marcador.setFotoMarcador(String.valueOf(base64String));
         marcador.setFoto1Marcador(String.valueOf(base64String1));
         marcador.setIdProyectoMarcador(String.valueOf(idProyecto));
-        marcador.setLatitudMarcador(String.valueOf(currentLocation.getLatitude()));
-        marcador.setLongitudMarcador(String.valueOf(currentLocation.getLongitude()));
+        marcador.setLatitudMarcador(String.valueOf(latitude));
+        marcador.setLongitudMarcador(String.valueOf(longitude));
         marcador.setFechaCorteMarcador(date);
         marcador.setAtributo1Marcador(edit_atri1.getText().toString());
         marcador.setAtributo2Marcador(especie_identificada.getText().toString());

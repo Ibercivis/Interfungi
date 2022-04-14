@@ -6,21 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.ibercivis.interfungiapp.Login"
-    android:background="#ffffff">
+    android:background="@color/dark">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/logologin"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/interfungi_marron"
-        android:transitionName="logo_image"
-        />
+        <ImageView
+            android:id="@+id/logologin"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/interfungi_marron"
+            android:transitionName="logo_image" />
 
         <TextView
             android:id="@+id/bienvenidotxt"
@@ -28,95 +27,104 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo"
             android:text="@string/login1"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/primaryLightColor"
             android:textSize="40sp"
             android:transitionName="logo_text" />
 
-    <TextView
-        android:id="@+id/accedetxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/antic"
-        android:text="@string/login2"
-        android:textSize="18sp"
-        android:transitionName="logo_desc"/>
+        <TextView
+            android:id="@+id/accedetxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/antic"
+            android:text="@string/login2"
+            android:textSize="18sp"
+            android:transitionName="logo_desc"
+            android:textColor="@color/textoClaro"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_edit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login3"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:transitionName="username_tran">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login4"
-            app:passwordToggleEnabled="true"
-            android:transitionName="password_tran"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_edittext"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/username_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:hint="@string/login3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:transitionName="username_tran"
+                android:textColorHint="@color/textoOscuro"
+                >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+android:textColor="#ffffff"
+                    />
 
-        <Button
-            android:id="@+id/pass_forgotten"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login5"
-            android:background="#00000000"
-            android:elevation="0dp"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/entrar_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/primaryLightColor"
-            android:onClick="loginRequest"
-            android:text="@string/login6"
-            android:textColor="#fff"
-            android:transitionName="btn1_tran" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_edit"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login4"
+                android:transitionName="password_tran"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/textoOscuro"
+                android:textColorHint="@color/textoOscuro">
 
-        <Button
-            android:id="@+id/signup_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:background="#00000000"
-            android:elevation="0dp"
-            android:fontFamily="@font/antic"
-            android:text="@string/login7"
-            android:transitionName="btn2_tran"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="#ffffff"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/pass_forgotten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:background="#00000000"
+                android:elevation="0dp"
+                android:text="@string/login5"
+                android:textColor="@color/textoClaro"/>
+
+            <Button
+                android:id="@+id/entrar_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/primaryLightColor"
+                android:onClick="loginRequest"
+                android:text="@string/login6"
+                android:textColor="#fff"
+                android:transitionName="btn1_tran" />
+
+            <Button
+                android:id="@+id/signup_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="#00000000"
+                android:elevation="0dp"
+                android:fontFamily="@font/antic"
+                android:text="@string/login7"
+                android:transitionName="btn2_tran"
+                android:textColor="@color/textoClaro"/>
 
 
-    </LinearLayout>
-
+        </LinearLayout>
 
 
     </LinearLayout>

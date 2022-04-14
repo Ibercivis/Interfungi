@@ -6,7 +6,10 @@
         android:id="@+id/buscador"
         android:title="@string/searcher"
         android:icon="@drawable/ic_search_black_24dp"
+        android:iconTint="@color/textoClaro"
+        android:iconTintMode="multiply"
         app:showAsAction="always|collapseActionView"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"></item>
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        ></item>
 
 </menu>

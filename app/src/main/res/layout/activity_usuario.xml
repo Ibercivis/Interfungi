@@ -15,7 +15,12 @@
         android:id="@+id/nav_view"
         app:headerLayout="@layout/header"
         app:menu="@menu/main_menu"
+        android:background="@color/dark"
+        app:itemTextColor="@color/textoOscuro"
+        app:itemIconTint="@color/textoOscuro"
+        android:foregroundTint="@color/textoOscuro"
         android:layout_gravity="start"
+
         />
 
     <RelativeLayout
@@ -28,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@color/dark"
             >
             <include
                 android:id="@+id/toolbar"
@@ -89,12 +95,53 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_wait"
-                    android:fontFamily="sans-serif-condensed"/>
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/textoClaro"/>
 
                 <ProgressBar
                     android:layout_marginTop="8dp"
                     android:layout_width="30dp"
-                    android:layout_height="30dp" />
+                    android:layout_height="30dp"
+                    android:progressTint="@color/textoClaro"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/marco_visualizar_foto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A4363030"
+            android:gravity="center"
+            android:visibility="gone"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/marcobotonsolido">
+                <ImageView
+                    android:id="@+id/foto_ver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+                </ImageView>
+
+                <Button
+                    android:id="@+id/foto_volver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Volver"
+                    android:layout_margin="8dp"
+                    android:paddingHorizontal="20dp"
+                    android:background="@color/primaryColor"
+                    android:textColor="#fff"/>
 
             </LinearLayout>
 

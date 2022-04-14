@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ibercivis.interfungiapp.SplashActivity"
-    android:background="@color/primaryTextColor">
+    android:background="@color/dark">
 
     <ImageView
         android:id="@+id/logosplash"
@@ -28,7 +28,7 @@
         android:fontFamily="@font/acme"
         android:text="@string/app_claim"
         android:textAlignment="center"
-        android:textColor="@color/primaryDarkColor"
+        android:textColor="@color/secondaryColor"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +42,11 @@
         android:fontFamily="@font/acme"
         android:text="@string/app_authors"
         android:textAlignment="center"
-        android:textColor="@color/primaryLightColor"
+        android:textColor="@color/textoClaro"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulosplash" />
+        app:layout_constraintTop_toBottomOf="@+id/titulosplash"
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

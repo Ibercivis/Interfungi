@@ -16,6 +16,10 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/main_menu"
         android:layout_gravity="start"
+        android:background="@color/dark"
+        app:itemTextColor="@color/textoOscuro"
+        app:itemIconTint="@color/textoOscuro"
+        android:foregroundTint="@color/textoOscuro"
         />
 
     <RelativeLayout
@@ -38,7 +42,8 @@
          <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerproyectos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+             android:background="@color/dark"/>
 
     </LinearLayout>
 
@@ -61,12 +66,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_wait"
-                    android:fontFamily="sans-serif-condensed"/>
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/textoClaro"/>
 
                 <ProgressBar
                     android:layout_marginTop="8dp"
                     android:layout_width="30dp"
-                    android:layout_height="30dp" />
+                    android:layout_height="30dp"
+                    android:progressTint="@color/textoClaro"/>
 
             </LinearLayout>
 

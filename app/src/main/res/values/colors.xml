@@ -6,6 +6,12 @@
     <color name="secondaryColor">#c99d66</color>
     <color name="secondaryLightColor">#fece95</color>
     <color name="secondaryDarkColor">#966f3a</color>
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#000000</color>
+    <color name="primaryTextColor">#919191</color>
+    <color name="secondaryTextColor">#616161</color>
+    <color name="dark">#1C1C1C</color>
+    <color name="darkLight">#3A3A3A</color>
+    <color name="textoClaro">#919191</color>
+    <color name="textoOscuro">#616161</color>
+    <color name="colorApagado">#BAFFB38F</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#ffffff</color>
 </resources>

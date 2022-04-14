@@ -71,6 +71,7 @@ public class AdaptadorCatalogo extends RecyclerView.Adapter<ViewHolderCatalogoSe
             holder.fondo.setBackgroundResource(R.drawable.shape);
             holder.titulo.setTextSize(13);
             holder.titulo.setTypeface(null, Typeface.BOLD);
+            holder.titulo.setTextColor(Color.parseColor("#332019"));
             holder.card.setElevation(8);
         } else {
             ViewGroup.LayoutParams params = holder.card.getLayoutParams();
@@ -79,6 +80,7 @@ public class AdaptadorCatalogo extends RecyclerView.Adapter<ViewHolderCatalogoSe
             holder.fondo.setBackgroundResource(R.drawable.shape_selected);
             holder.titulo.setTextSize(12);
             holder.titulo.setTypeface(null, Typeface.NORMAL);
+            holder.titulo.setTextColor(Color.parseColor("#ffffff"));
 
         }
 

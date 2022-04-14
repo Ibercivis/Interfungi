@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 
@@ -83,7 +84,7 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
         navigationView = findViewById(R.id.nav_view2);
         toolbar = findViewById(R.id.toolbar2);
 
-        toolbar.setBackgroundColor(getColor(R.color.primaryTextColor));
+        //toolbar.setBackgroundColor(getColor(R.color.dark));
 
         /*-----Toolbar-----*/
         setSupportActionBar(toolbar);
@@ -101,6 +102,7 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_open_drawer, R.string.navigation_close_drawer);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.textoClaro));
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -373,9 +375,15 @@ public class ListadoProyectos extends AppCompatActivity implements NavigationVie
 
         getMenuInflater().inflate(R.menu.menu_buscador, menu);
         MenuItem item = menu.findItem(R.id.buscador);
+
         SearchView searchView = (SearchView) item.getActionView();
 
         searchView.setOnQueryTextListener(this);
+
+        EditText txtSearch = ((EditText)searchView.findViewById(androidx.appcompat.R.id.search_src_text));
+        txtSearch.setHintTextColor(getResources().getColor(R.color.textoOscuro));
+        txtSearch.setTextColor(getResources().getColor(R.color.textoClaro));
+
 
         item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override

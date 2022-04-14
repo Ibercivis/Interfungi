@@ -8,6 +8,7 @@
     android:layout_margin="10dp"
     app:cardCornerRadius="5dp"
     android:elevation="5dp"
+    app:cardBackgroundColor="@color/darkLight"
     >
 
     //app:cardBackgroundColor="#2196F3"
@@ -20,33 +21,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="32dp">
 
 
             <ImageView
                 android:id="@+id/photo_0"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:paddingHorizontal="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_image_black_24dp"
                 android:text="Subir Logo"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:layout_marginRight="8dp"
+                android:layout_marginVertical="4dp"
+                android:background="@drawable/round_shape"/>
 
             <ImageView
                 android:id="@+id/photo_1"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:paddingHorizontal="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_image_black_24dp"
                 android:text="Subir Logo"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:layout_marginVertical="4dp"
+                android:background="@drawable/round_shape"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:paddingHorizontal="32dp">
                 <TextView
                     android:id="@+id/titulo"
                     android:layout_marginTop="8dp"
@@ -57,9 +65,10 @@
                     android:fontFamily="@font/noto_sans"
                     android:text="Título"
                     android:textAllCaps="true"
-                    android:textColor="@color/secondaryTextColor"
+                    android:textColor="@color/textoClaro"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="end"/>
 
                 <TextView
                     android:id="@+id/titulo2"
@@ -71,9 +80,11 @@
                     android:fontFamily="@font/noto_sans"
                     android:text="Título"
                     android:textAllCaps="true"
-                    android:textColor="@color/secondaryTextColor"
+                    android:textColor="@color/textoClaro"
                     android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    />
 
             </LinearLayout>
 

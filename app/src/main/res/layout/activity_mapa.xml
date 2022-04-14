@@ -17,12 +17,17 @@
         android:id="@+id/nav_view4"
         app:headerLayout="@layout/header"
         app:menu="@menu/main_menu"
+        android:background="@color/dark"
+        app:itemTextColor="@color/textoOscuro"
+        app:itemIconTint="@color/textoOscuro"
+        android:foregroundTint="@color/textoOscuro"
         android:layout_gravity="start"
         />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/dark">
 
 
 
@@ -48,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#ffffff"
+            android:background="@color/dark"
            android:visibility="gone"><!-- Mover to gone -->
 
             <TextView
@@ -60,7 +65,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="@string/marker1"
-                android:textColor="@color/primaryColor"
+                android:textColor="@color/colorApagado"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
@@ -71,7 +76,7 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:visibility="gone" ><!-- mover to gone -->
+                 ><!-- mover to gone -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/camera_wrapper"
                     android:orientation="horizontal"
@@ -81,6 +86,7 @@
                     android:elevation="5dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
+                    app:cardBackgroundColor="@color/dark"
                     >
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -98,7 +104,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/seta_sincortar">
+                        android:text="@string/seta_sincortar"
+                        android:textColor="@color/textoClaro">
                     </TextView>
                     </LinearLayout>
                     </RelativeLayout>
@@ -113,6 +120,7 @@
                     android:elevation="5dp"
                     android:layout_margin="10dp"
                     android:gravity="center"
+                    app:cardBackgroundColor="@color/dark"
                     >
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -126,11 +134,14 @@
                                 android:id="@+id/camera1"
                                 android:layout_width="144dp"
                                 android:layout_height="144dp"
-                                android:src="@drawable/ic_photo_camera_black_24dp"/>
+                                android:src="@drawable/ic_photo_camera_black_24dp"
+                                />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/seta_cortada">
+                                android:text="@string/seta_cortada"
+                                android:textColor="@color/textoClaro">
                             </TextView>
                         </LinearLayout>
                     </RelativeLayout>
@@ -303,7 +314,7 @@
                     android:layout_margin="8dp"
                     android:paddingHorizontal="20dp"
                     android:background="@color/secondaryColor"
-                    android:textColor="@color/secondaryTextColor"
+                    android:textColor="@color/mtrl_textinput_default_box_stroke_color"
                     />
 
             </LinearLayout>
@@ -343,16 +354,17 @@
              />
 
         <ImageView
+            android:id="@+id/button_layers"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/button_layers"
-            android:scaleType="centerCrop"
-            android:src="@drawable/capas"
             android:layout_below="@id/ic_center_map"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="16dp"
-            android:clickable="true"/>
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/capas"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/txtTitulo"
@@ -365,8 +377,9 @@
             android:fontFamily="@font/montserrat_bold"
             android:textAllCaps="true"
             android:textSize="16sp"
-            android:textColor="#000000"
+            android:textColor="@color/textoClaro"
             android:background="@drawable/marcobotonsolido"
+            android:visibility="gone"
 
             />
 
@@ -391,9 +404,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="48dp"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_baseline_add_24"/>
+            android:layout_marginBottom="48dp"
+            android:src="@drawable/ic_baseline_add_24" />
 
     </RelativeLayout>
 
@@ -416,7 +429,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/popup_wait"
-                    android:fontFamily="sans-serif-condensed"/>
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/textoClaro"/>
 
                 <ProgressBar
                     android:layout_marginTop="8dp"
@@ -1487,7 +1501,7 @@
 
                     <Button
                         android:id="@+id/cerrar_marcador"
-                        android:background="#5E4C33"
+                        android:background="@color/primaryColor"
                         android:layout_width="200dp"
                         android:layout_height="35dp"
                         android:layout_marginTop="12dp"
@@ -1534,7 +1548,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="@string/noInfo"
-                    android:fontFamily="sans-serif-condensed"/>
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/textoClaro"/>
 
                 <Button
                     android:layout_marginTop="16dp"

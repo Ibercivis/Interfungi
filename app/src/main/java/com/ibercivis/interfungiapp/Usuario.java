@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -54,6 +56,9 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
     RecyclerView recyclerListaSetas;
     AdaptadorSetas recyclerAdapter;
     ArrayList<Marcador> ListaSetas = new ArrayList<>();
+    LinearLayout marco_photo;
+    ImageView photoView;
+    Button backViewButton;
 
     TextView texto_noHayGustan, texto_noHayPropios;
 
@@ -69,6 +74,10 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+
+        marco_photo = findViewById(R.id.marco_visualizar_foto);
+        photoView = findViewById(R.id.foto_ver);
+        backViewButton = findViewById(R.id.foto_volver);
 
         /*-----Toolbar-----*/
         setSupportActionBar(toolbar);
@@ -91,6 +100,13 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_misproyectos);
+
+        backViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                marco_photo.setVisibility(View.GONE);
+            }
+        });
 
         getUserRequest();
 
@@ -194,7 +210,7 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
                             // texto_noHayGustan.setVisibility(View.GONE);
                             recyclerListaSetas.setVisibility(View.VISIBLE);
                             recyclerListaSetas.setHasFixedSize(true);
-                            recyclerAdapter = new AdaptadorSetas(ListaSetas);
+                            recyclerAdapter = new AdaptadorSetas(ListaSetas, marco_photo, photoView);
                             recyclerListaSetas.setAdapter(recyclerAdapter);
                             LinearLayoutManager layout = new LinearLayoutManager(Usuario.this);
                             layout.setOrientation(LinearLayoutManager.VERTICAL);

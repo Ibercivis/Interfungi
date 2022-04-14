@@ -6,15 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="6dp"
     android:elevation="5dp"
+
     >
 
     //app:cardBackgroundColor="#2196F3"
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_shape">
 
 
         <LinearLayout
@@ -49,7 +51,7 @@
                     android:fontFamily="@font/noto_sans"
                     android:text="Título"
                     android:textAllCaps="true"
-                    android:textColor="@color/secondaryTextColor"
+                    android:textColor="@color/colorApagado"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <TextView
@@ -60,7 +62,7 @@
                     android:fontFamily="@font/noto_sans"
                     android:text="Título"
                     android:textAllCaps="true"
-                    android:textColor="@color/primaryColor"
+                    android:textColor="@color/textoOscuro"
                     android:textSize="16dp" />
 
 
@@ -76,7 +78,7 @@
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/noto_sans"
                 android:text="Descripción limitada a 240 caracteres que pretende explicar el objetivo del proyecto."
-                android:textColor="#423C3C"
+                android:textColor="@color/textoClaro"
                 android:textSize="14sp" />
 
 
