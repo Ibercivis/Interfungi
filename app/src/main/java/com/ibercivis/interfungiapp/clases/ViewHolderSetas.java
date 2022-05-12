@@ -3,6 +3,7 @@ package com.ibercivis.interfungiapp.clases;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,13 @@ public class ViewHolderSetas extends RecyclerView.ViewHolder implements View.OnC
     ImageView photo_1;
     ImageView iconCreaObservacion;
     List<Marcador> ListaSetas;
+    Button deletebutton;
+    Button delete_eliminar;
+    Button delete_volver;
+    Button btn_verEnMapa;
+    TextView agusanamiento, presion;
+    LinearLayout zonaA;
+    LinearLayout zonaB;
 
 
     public ViewHolderSetas(@NonNull View itemView, List<Marcador> datos) {
@@ -41,6 +49,14 @@ public class ViewHolderSetas extends RecyclerView.ViewHolder implements View.OnC
         card = itemView.findViewById(R.id.marcador_card);
         photo_0= itemView.findViewById(R.id.photo_0);
         photo_1= itemView.findViewById(R.id.photo_1);
+        deletebutton = itemView.findViewById(R.id.delete_btn);
+        delete_eliminar = itemView.findViewById(R.id.eliminar_confirmar);
+        delete_volver = itemView.findViewById(R.id.eliminar_volver);
+        zonaA = itemView.findViewById(R.id.zona_A);
+        zonaB = itemView.findViewById(R.id.zona_B);
+        agusanamiento = itemView.findViewById(R.id.dato_agusanamiento);
+        presion = itemView.findViewById(R.id.dato_presion);
+        btn_verEnMapa = itemView.findViewById(R.id.mapa_btn);
     }
 
     @Override

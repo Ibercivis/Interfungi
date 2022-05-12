@@ -60,6 +60,8 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
     ImageView photoView;
     Button backViewButton;
 
+
+
     TextView texto_noHayGustan, texto_noHayPropios;
 
     Bitmap bitmap_logo;
@@ -78,6 +80,7 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
         marco_photo = findViewById(R.id.marco_visualizar_foto);
         photoView = findViewById(R.id.foto_ver);
         backViewButton = findViewById(R.id.foto_volver);
+
 
         /*-----Toolbar-----*/
         setSupportActionBar(toolbar);
@@ -201,7 +204,11 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
                             String photo_1 = "https://interfungi.ibercivis.es/uploads/marcadores/"+String.valueOf(id)+"_1.jpg";
                             String fechaCorte = String.valueOf(jsonArray.getJSONObject(i).get("fechaCorte"));
                             String atributo2 = String.valueOf(jsonArray.getJSONObject(i).get("atributo2"));
-                            ListaSetas.add(new Marcador(id, atributo2, fechaCorte, photo_0, photo_1));
+                            String atributo3 = String.valueOf(jsonArray.getJSONObject(i).get("atributo3"));
+                            String atributo4 = String.valueOf(jsonArray.getJSONObject(i).get("atributo4"));
+                            Double latitud = Double.parseDouble(String.valueOf(jsonArray.getJSONObject(i).get("latitud")));
+                            Double longitud = Double.parseDouble(String.valueOf(jsonArray.getJSONObject(i).get("longitud")));
+                            ListaSetas.add(new Marcador(id, atributo2, atributo3, atributo4, fechaCorte, photo_0, photo_1, latitud, longitud));
 
                         }
 
@@ -210,7 +217,7 @@ public class Usuario extends AppCompatActivity implements NavigationView.OnNavig
                             // texto_noHayGustan.setVisibility(View.GONE);
                             recyclerListaSetas.setVisibility(View.VISIBLE);
                             recyclerListaSetas.setHasFixedSize(true);
-                            recyclerAdapter = new AdaptadorSetas(ListaSetas, marco_photo, photoView);
+                            recyclerAdapter = new AdaptadorSetas(ListaSetas, marco_photo, photoView, cargar, Usuario.this);
                             recyclerListaSetas.setAdapter(recyclerAdapter);
                             LinearLayoutManager layout = new LinearLayoutManager(Usuario.this);
                             layout.setOrientation(LinearLayoutManager.VERTICAL);

@@ -17,77 +17,235 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <LinearLayout
+            android:id="@+id/zona_A"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="32dp">
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/zona_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="32dp">
 
 
-            <ImageView
-                android:id="@+id/photo_0"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:paddingHorizontal="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_image_black_24dp"
-                android:text="Subir Logo"
-                android:textColor="#fff"
-                android:layout_marginRight="8dp"
-                android:layout_marginVertical="4dp"
-                android:background="@drawable/round_shape"/>
+                <ImageView
+                    android:id="@+id/photo_0"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="4dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/round_shape"
+                    android:paddingHorizontal="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp"
+                    android:text="Subir Logo"
+                    android:textColor="#fff" />
 
-            <ImageView
-                android:id="@+id/photo_1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:paddingHorizontal="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_image_black_24dp"
-                android:text="Subir Logo"
-                android:textColor="#fff"
-                android:layout_marginVertical="4dp"
-                android:background="@drawable/round_shape"/>
+                <ImageView
+                    android:id="@+id/photo_1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="4dp"
+                    android:background="@drawable/round_shape"
+                    android:paddingHorizontal="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_image_black_24dp"
+                    android:text="Subir Logo"
+                    android:textColor="#fff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="32dp">
+
+                    <TextView
+                        android:id="@+id/titulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/noto_sans"
+                        android:gravity="end"
+                        android:text="Título"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textoClaro"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/titulo2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="4dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/noto_sans"
+                        android:gravity="end"
+                        android:text="Título"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textoClaro"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="32dp">
-                <TextView
-                    android:id="@+id/titulo"
-                    android:layout_marginTop="8dp"
-                    android:layout_margin="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="Título"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textoClaro"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:gravity="end"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/titulo2"
-                    android:layout_marginTop="8dp"
-                    android:layout_margin="4dp"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/noto_sans"
-                    android:text="Título"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textoClaro"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:gravity="end"
-                    />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Agusanamiento:"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Presión recolectora:"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dato_agusanamiento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/dato_presion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+
+                <Button
+                    android:id="@+id/delete_btn"
+                    android:layout_width="130dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="#B53026"
+                    android:text="ELIMINAR"
+                    android:textColor="#E9EBF1"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/mapa_btn"
+                    android:layout_width="130dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/primaryColor"
+                    android:text="VER EN MAPA"
+                    android:textColor="#E9EBF1"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/zona_B"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:text="¿Seguro que quieres eliminar este marcador?"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/textoClaro"/>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+
+                <Button
+                    android:id="@+id/eliminar_confirmar"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:background="#B53026"
+                    android:text="SÍ"
+                    android:textColor="#E9EBF1"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="24dp"
+                    />
+
+
+
+                <Button
+                    android:id="@+id/eliminar_volver"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/primaryColor"
+                    android:text="NO"
+                    android:textColor="#E9EBF1"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

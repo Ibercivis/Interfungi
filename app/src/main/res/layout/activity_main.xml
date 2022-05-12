@@ -21,8 +21,7 @@
         android:background="@color/dark"
         app:itemTextColor="@color/textoOscuro"
         app:itemIconTint="@color/textoOscuro"
-        android:foregroundTint="@color/textoOscuro"
-         />
+        android:foregroundTint="@color/textoOscuro" />
 
 
     <ScrollView

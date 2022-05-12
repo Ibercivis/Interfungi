@@ -27,11 +27,14 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.26024955436720143" />
         <entry key="app/src/main/res/layout/activity_mapa.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_mapa2.xml" value="0.16041666666666668" />
         <entry key="app/src/main/res/layout/activity_proyecto_privado.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/activity_quienes_somos.xml" value="0.35131712259371833" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_subir_marcador.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_usuario.xml" value="0.21580547112462006" />
+        <entry key="app/src/main/res/layout/activity_ver_marcador.xml" value="0.13854166666666667" />
         <entry key="app/src/main/res/layout/catalogo_setas_card.xml" value="0.2127659574468085" />
         <entry key="app/src/main/res/layout/header.xml" value="0.21580547112462006" />
         <entry key="app/src/main/res/layout/layout.xml" value="0.23581560283687944" />

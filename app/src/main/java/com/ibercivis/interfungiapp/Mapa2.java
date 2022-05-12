@@ -35,6 +35,8 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -119,8 +121,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     RecyclerView recyclerCatalogoSetas;
     AdaptadorCatalogo recyclerAdapter;
     Toolbar toolbar;
-    RelativeLayout paraMapa;
-    LinearLayout layout_marcador, layout_foto, atri1;
+    RelativeLayout paraMapa, relative_marker, layout_marcador;
+    LinearLayout layout_foto, atri1, linear_especie, linear_formulario, linear_fotos_ejemplo, linear_ver_ejemplo;
     LinearLayout layout_atributo1, layout_atributo2, layout_atributo3;
     TextInputLayout titulo1;
     TextInputEditText edit_atri1;
@@ -138,9 +140,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     private MyLocationNewOverlay mLocationOverlay;
     private ScaleBarOverlay mScaleBarOverlay;
     private CopyrightOverlay mCopyrightOverlay;
-    int idProyecto;
+    int idProyecto, paso = 1;
     String titleProyecto;
-    TextView display_titulo, copyrightTxt;
+    TextView display_titulo, copyrightTxt, txt_pasos;
 
     HashMap<String, Marcador> mapaMarcadores = new HashMap<String, Marcador>();
     ArrayList<TiposDeSetas> ListaCatalogo = new ArrayList<>();
@@ -151,6 +153,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     ImageView btninfo1, btninfo2, btninfo3, btninfo4, btninfo5, btninfo6, btninfo7, btninfo8, btninfo9, btninfo10, btninfo11, btninfo12, btninfo13, btninfo14, btninfo15, btninfo16, btninfo17, btninfo18, btninfo19, btninfo20, btninfo21, btninfo22, btninfo23;
     CheckBox checkBox;
     TextView especie_identificada;
+    RadioGroup grupo_agusanamiento, grupo_presion;
+    String grado_agusanamiento, grado_presion;
 
     String info_atributo1, info_atributo2, info_atributo3, info_atributo4, info_atributo5, info_atributo6, info_atributo7, info_atributo8, info_atributo9, info_atributo10, info_atributo11, info_atributo12, info_atributo13, info_atributo14, info_atributo15, info_atributo16, info_atributo17, info_atributo18, info_atributo19, info_atributo20, info_atributo21, info_atributo22, info_atributo23;
 
@@ -183,11 +187,12 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     marcadorTipo marcador_tipo;
     public MapView map;
     Marker markpress;
+    int indice_agusanamiento = -1, indice_presion = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapa);
+        setContentView(R.layout.activity_mapa2);
 
         ContextWrapper cw = this;
         suggestedFix(cw);
@@ -198,10 +203,19 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         navigationView = findViewById(R.id.nav_view4);
         toolbar = findViewById(R.id.toolbar2);
 
-        FloatingActionButton floating = findViewById(R.id.fab);
+
+
+
+        FloatingActionButton floating2 = findViewById(R.id.fab2);
 
         marcador_mostrado = findViewById(R.id.mostrarMarker);
         marco_foto = findViewById(R.id.foto_marcador);
+        grupo_agusanamiento = findViewById(R.id.group_agusanamiento);
+        grupo_presion = findViewById(R.id.group_presion);
+        linear_fotos_ejemplo = findViewById(R.id.fotos_ejemplo);
+        Button btn_volver_ejemplo = findViewById(R.id.ejemplo_volver);
+        linear_ver_ejemplo = findViewById(R.id.ver_ejemplos);
+
 
         back = findViewById(R.id.cerrar_marcador);
         btndelete = findViewById(R.id.borrar_marcador);
@@ -229,6 +243,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         layout_foto = findViewById(R.id.photo);
         paraMapa = findViewById(R.id.mapa);
         layout_info = findViewById(R.id.displayinfo);
+        linear_especie = findViewById(R.id.zona_especie);
+        linear_formulario = findViewById(R.id.zona_formulario);
+        txt_pasos = findViewById(R.id.texto_pasos);
 
         atri1 = findViewById(R.id.atributo1);
 
@@ -270,6 +287,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         miniatura_camara = findViewById(R.id.camera);
         miniatura_camara1 = findViewById(R.id.camera1);
         txt_info = findViewById(R.id.text_info);
+        aceptar.setText("Siguiente");
 
         btninfo1 = findViewById(R.id.info1);
 
@@ -358,6 +376,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             connected = false;
 
         if (connected == true) {
+            especie_identificada.setText("");
             //HAY CONEXIÓN A INTERNET. LANZAMOS LA ACTIVIDAD EN MODO NORMAL.
 
             /*-- COMPROBAMOS SI HAY MARCADORES POR SUBIR EN LA BASE DE DATOS --*/
@@ -383,6 +402,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
             GpsMyLocationProvider provider = new GpsMyLocationProvider(this.getApplicationContext());
             mLocationOverlay = new MyLocationNewOverlay(provider, map);
+            mLocationOverlay.enableMyLocation();
+            mLocationOverlay.setOptionsMenuEnabled(true);
+            /*
             mScaleBarOverlay = new ScaleBarOverlay(map);
             mCopyrightOverlay = new CopyrightOverlay(this);
 
@@ -394,8 +416,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             map.setMaxZoomLevel(20.0);
 
 
-            mLocationOverlay.enableMyLocation();
-            mLocationOverlay.setOptionsMenuEnabled(true);
+
 
 
 
@@ -481,15 +502,25 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
             esperarYCentrarMapa(mapController, 2000);
             //SOLICITAR EL TIPO DE MARCADOR DEL PROYECTO
-            getCustomMarkerRequest();
-
-
-        } else {
+            // getCustomMarkerRequest();
+             */
+            paraMapa.setVisibility(View.GONE);
 
             layout_marcador.setVisibility(View.VISIBLE);
-            cargarCatalogoSetasOffline(connected);
+
+            cargarCatalogoSetas(connected);
+
+            layout_foto.setVisibility(View.VISIBLE);
+
+            txt_pasos.setVisibility(View.VISIBLE);
+
+            layout_marcador.setVisibility(View.VISIBLE);
 
             paraMapa.setVisibility(View.GONE);
+
+            layout_foto.setVisibility(View.VISIBLE);
+            txt_pasos.setText("Paso 1/3");
+            txt_pasos.setVisibility(View.VISIBLE);
 
             miniatura_camara.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -505,38 +536,214 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             });
 
 
+
+
+
+        } else {
+            especie_identificada.setText("");
+            layout_marcador.setVisibility(View.VISIBLE);
+
+            cargarCatalogoSetasOffline(connected);
+
+            paraMapa.setVisibility(View.GONE);
+
+            layout_foto.setVisibility(View.VISIBLE);
+
+            txt_pasos.setVisibility(View.VISIBLE);
+
+            layout_marcador.setVisibility(View.VISIBLE);
+
+            paraMapa.setVisibility(View.GONE);
+
+            layout_foto.setVisibility(View.VISIBLE);
+            txt_pasos.setText("Paso 1/3");
+            txt_pasos.setVisibility(View.VISIBLE);
+
+                    miniatura_camara.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addPhoto(0);
+                        }
+                    });
+                    miniatura_camara1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addPhoto(1);
+                        }
+                    });
+
+
+
+            };
+
+
             aceptar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("Marcador", "Call to subir marcador");
 
-                    boolean connected = false;
-                    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                    if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                            connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                        //we are connected to a network
-                        connected = true;
-                    } else
-                        connected = false;
+                    if(paso==1){
+                        aceptar.setText("continuar");
+                        paso = 2;
+                        layout_foto.setVisibility(View.GONE);
+                        linear_especie.setVisibility(View.VISIBLE);
+                        txt_pasos.setText("Paso 2/3");
+                    } else if (paso==2) {
+                        if(especie_identificada.getText().equals("")){
+                            Toast toast;
+                            CharSequence text;
 
-                    if (connected == true) {
-                        subirMarcador();
-                    } else {
-                        subirMarcadorOffline();
+                            text = "Debes identificar una especie del catálogo.";
+                            toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+                            toast.show();
+
+                        } else {
+                            paso = 3;
+                            linear_especie.setVisibility(View.GONE);
+                            txt_pasos.setText("Paso 3/3");
+                            linear_formulario.setVisibility(View.VISIBLE);
+                            aceptar.setText("continuar");
+
+                    } } else if (paso == 3) {
+                        indice_agusanamiento = grupo_agusanamiento.getCheckedRadioButtonId();
+                        indice_presion = grupo_presion.getCheckedRadioButtonId();
+                        aceptar.setText("enviar");
+                        if (indice_presion != -1 & indice_agusanamiento != -1) {
+                            View radioButton_agusanamiento = grupo_agusanamiento.findViewById(indice_agusanamiento);
+                            View radioButton_presion = grupo_presion.findViewById(indice_presion);
+                            int idx1 = grupo_agusanamiento.indexOfChild(radioButton_agusanamiento);
+                            int idx2 = grupo_presion.indexOfChild(radioButton_presion);
+                            RadioButton r_agusanamiento = (RadioButton) grupo_agusanamiento.getChildAt(idx1);
+                            RadioButton r_presion = (RadioButton) grupo_agusanamiento.getChildAt(idx2);
+                            grado_agusanamiento = r_agusanamiento.getText().toString();
+                            grado_presion = r_presion.getText().toString();
+
+                            Log.d("Marcador", "Call to subir marcador");
+
+
+                            if (ActivityCompat.checkSelfPermission(Mapa2.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Mapa2.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                // TODO: Consider calling
+                                //    ActivityCompat#requestPermissions
+                                // here to request the missing permissions, and then overriding
+                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                //                                          int[] grantResults)
+                                // to handle the case where the user grants the permission. See the documentation
+                                // for ActivityCompat#requestPermissions for more details.
+                                return;
+                            }
+                            Location currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            boolean connected = false;
+                            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                                //we are connected to a network
+                                connected = true;
+                            } else
+                                connected = false;
+
+
+                            if(currentLocation != null) {
+                                latitude = currentLocation.getLatitude();
+                                longitude = currentLocation.getLongitude();
+                                if (connected == true) {
+                                    subirMarcador();
+                                } else {
+                                    subirMarcadorOffline();
+                                }
+
+                            } else {
+                                GeoPoint myPoint = mLocationOverlay.getMyLocation();
+                                latitude = myPoint.getLatitude();
+                                longitude = myPoint.getLongitude();
+
+                                if (connected == true) {
+                                    subirMarcador();
+                                } else {
+                                    subirMarcadorOffline();
+                                }
+                            }
+                            /*
+                            boolean connected;
+                            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                                //we are connected to a network
+                                connected = true;
+                            } else
+                                connected = false;
+
+                            if (connected == true) {
+
+                                subirMarcador();
+                            } else {
+                                subirMarcadorOffline();
+                            }
+
+                        } */
+
+
+                        }
+                        else {
+
+                            Toast toast;
+                            CharSequence text;
+
+                            text = "Debes completar todos los datos";
+                            toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+
                     }
+
+
 
 
                 }
             });
 
-        }
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (paso == 1){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                } else if (paso == 2){
+                    paso = 1;
+                    layout_foto.setVisibility(View.VISIBLE);
+                    linear_especie.setVisibility(View.GONE);
+                    txt_pasos.setText("Paso 1/3");
+                } else if (paso ==3){
+                    paso = 2;
+                    linear_especie.setVisibility(View.VISIBLE);
+                    txt_pasos.setText("Paso 2/3");
+                    linear_formulario.setVisibility(View.GONE);
+                    aceptar.setText("continuar");
+                }
+
+            }
+        });
+
+        linear_ver_ejemplo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linear_fotos_ejemplo.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btn_volver_ejemplo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                linear_fotos_ejemplo.setVisibility(View.GONE);
+            }
+        });
+
+
 
 
         /*-----MÉTODOS PROPIOS DE ESTA ACTIVITY-----*/
 
-        btCenterMap = (ImageButton) findViewById(R.id.ic_center_map);
+        // btCenterMap = (ImageButton) findViewById(R.id.ic_center_map);
 
-        btCenterMap.setOnClickListener(new View.OnClickListener() {
+      /*  btCenterMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mLocationOverlay.getMyLocation() != null) {
@@ -597,7 +804,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         map.getOverlays().add(overlay);
          */
 
-        floating.setOnClickListener(new View.OnClickListener() {
+        floating2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -774,6 +981,24 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         }
     }
 
+    public void saberLocation(int milisegundos){
+        Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                // acciones que se ejecutan tras los milisegundos
+                GeoPoint myPoint = mLocationOverlay.getMyLocation();
+
+                if(myPoint != null) {
+                    final Double longitud_reserva = myPoint.getLongitude();
+                    final Double latitud_reserva = myPoint.getLatitude();
+                }
+
+            }
+        }, milisegundos);
+    }
+
+    /*
     public void esperarYCentrarMapa(final IMapController mapController, int milisegundos) {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -791,7 +1016,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             }
         }, milisegundos);
     }
-
+*/
     @Override
     public void onLocationChanged(Location location) {
         currentLocation = location;
@@ -811,6 +1036,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
     public void onProviderDisabled(String provider) {
 
     }
+
+
 
     public String generarSnippet(Marcador marcador, marcadorTipo marcadortipo) {
 
@@ -852,16 +1079,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
 
 
-        cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                layout_marcador.setVisibility(View.GONE);
-                paraMapa.setVisibility(View.VISIBLE);
 
-            }
-        });
 
-        aceptar.setOnClickListener(new View.OnClickListener() {
+      /*  aceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Marcador", "Call to subir marcador");
@@ -883,7 +1103,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
 
             }
-        });
+        }); */
 
     }
 
@@ -1423,6 +1643,8 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                         text = "Marcador subido correctamente";
                         toast = Toast.makeText(getApplicationContext(), text, duration);
                         toast.show();
+                        grupo_agusanamiento.clearCheck();
+                        grupo_presion.clearCheck();
                         recreate();
 
 
@@ -1476,9 +1698,11 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 login_params.put("fechaCorte", date);
                 login_params.put("atributo1", edit_atri1.getText().toString());
                 login_params.put("atributo2", especie_identificada.getText().toString());
-                if(checkBox.isChecked() == true){
-                    login_params.put("atributo3", "CURIOSIDAD");
-                }
+                login_params.put("atributo3", grado_agusanamiento);
+                login_params.put("atributo4", grado_presion);
+
+
+
 
                 Log.d("Date", date);
 
@@ -1614,11 +1838,14 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
         marcador.setFechaCorteMarcador(date);
         marcador.setAtributo1Marcador(edit_atri1.getText().toString());
         marcador.setAtributo2Marcador(especie_identificada.getText().toString());
-        if(checkBox.isChecked() == true){
-            marcador.setAtributo3Marcador("CURIOSIDAD");
-        }
+        marcador.setAtributo3Marcador(grado_agusanamiento);
+        marcador.setAtributo4Marcador(grado_presion);
+
+
 
         repo.insertMarcadorSetaRepo(marcador);
+        grupo_presion.clearCheck();
+        grupo_agusanamiento.clearCheck();
 
         int duration = Toast.LENGTH_SHORT;
         Toast toast;
@@ -1731,9 +1958,9 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 login_params.put("fechaCorte", marcadorSeta.getFechaCorteMarcador());
                 login_params.put("atributo1", marcadorSeta.getAtributo1Marcador());
                 login_params.put("atributo2", marcadorSeta.getAtributo2Marcador());
-                if(marcadorSeta.getAtributo3Marcador() == "CURIOSIDAD"){
-                    login_params.put("atributo3", marcadorSeta.getAtributo3Marcador());
-                }
+                login_params.put("atributo3", marcadorSeta.getAtributo3Marcador());
+                login_params.put("atributo4", marcadorSeta.getAtributo4Marcador());
+
 
                 Log.d("Date", date);
 
@@ -1891,9 +2118,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
 
         titulo1.setHint(marcador.getAtributo1());
 
-        if(marker.getAtributo3().equals("CURIOSIDAD")){
-            checkBox.setChecked(true);
-        } else checkBox.setChecked(false);
+
 
         cargarCatalogoSetas(true);
 
@@ -1998,9 +2223,7 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
                 login_params.put("longitud", String.valueOf(marker.getLongitud()));
                 login_params.put("atributo1", edit_atri1.getText().toString());
                 login_params.put("atributo2", especie_identificada.getText().toString());
-                if(checkBox.isChecked() == true){
-                    login_params.put("atributo3", "CURIOSIDAD");
-                }
+                login_params.put("atributo3", "");
                 login_params.put("atributo4", "");
                 login_params.put("atributo5", "");
                 login_params.put("atributo6", "");
@@ -2319,6 +2542,10 @@ public class Mapa2 extends AppCompatActivity implements NavigationView.OnNavigat
             latitude = location.getLatitude();
         }
     };
+
+    void hacerObservacion (){
+
+    }
 
 }
 

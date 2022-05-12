@@ -57,6 +57,28 @@ public class Marcador {
         this.photo_1 = photo_1;
         this.fechaCorte = fechaCorte;
     }
+    public Marcador(int id, String atributo2, String atributo3, String atributo4, String fechaCorte, String photo_0, String photo_1) {
+        this.id = id;
+        this.atributo2 = atributo2;
+        this.atributo3 = atributo3;
+        this.atributo4 = atributo4;
+        this.photo_0 = photo_0;
+        this.photo_1 = photo_1;
+        this.fechaCorte = fechaCorte;
+    }
+    public Marcador(int id, String atributo2, String atributo3, String atributo4, String fechaCorte, String photo_0, String photo_1,
+                    Double latitud, Double longitud) {
+        this.id = id;
+        this.atributo2 = atributo2;
+        this.atributo3 = atributo3;
+        this.atributo4 = atributo4;
+        this.photo_0 = photo_0;
+        this.photo_1 = photo_1;
+        this.fechaCorte = fechaCorte;
+        this.latitud = latitud;
+        this.longitud = longitud;
+
+    }
 
     public int getIdUser() {
         return idUser;

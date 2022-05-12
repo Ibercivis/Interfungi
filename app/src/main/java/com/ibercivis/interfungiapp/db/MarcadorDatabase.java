@@ -14,7 +14,7 @@ import com.ibercivis.interfungiapp.db.entities.MarcadorSeta;
 
         MarcadorSeta.class
 
-}, version = 2 )
+}, version = 3 )
 public abstract class MarcadorDatabase extends RoomDatabase {
 
     public static MarcadorDatabase INSTANCE;
